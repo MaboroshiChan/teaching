@@ -1,0 +1,172 @@
+# dune exec class
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Workspace root: "/Users/darth_sky/\230\149\153\229\173\166/ocaml/class"
+# Auto-detected concurrency: 10
+$ /Users/darth_sky/.opam/default/bin/ocamlc.opt -config > /var/folders/0_/1fbytrq56zs4hz9yzc5m2vww0000gn/T/dune_c3dffa_output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = "default"
+#  ; toplevel_path =
+#      Some External "/Users/darth_sky/.opam/default/lib/toplevel"
+#  ; ocaml_bin = External "/Users/darth_sky/.opam/default/bin"
+#  ; ocaml = Ok External "/Users/darth_sky/.opam/default/bin/ocaml"
+#  ; ocamlc = External "/Users/darth_sky/.opam/default/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/Users/darth_sky/.opam/default/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/Users/darth_sky/.opam/default/bin/ocamldep.opt"
+#  ; ocamlmklib =
+#      Ok External "/Users/darth_sky/.opam/default/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "DUNE_OCAML_HARDCODED" : "/Users/darth_sky/.opam/default/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/Users/darth_sky/.opam/default/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" :
+#            "/Users/darth_sky/\230\149\153\229\173\166/ocaml/class"
+#        ; "INSIDE_DUNE" :
+#            "/Users/darth_sky/\230\149\153\229\173\166/ocaml/class/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/Users/darth_sky/\230\149\153\229\173\166/ocaml/class/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/Users/darth_sky/\230\149\153\229\173\166/ocaml/class/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/Users/darth_sky/\230\149\153\229\173\166/ocaml/class/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_paths = [ External "/Users/darth_sky/.opam/default/lib" ]
+#  ; arch_sixtyfour = true
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "4.14.1"
+#      ; standard_library_default = "/Users/darth_sky/.opam/default/lib/ocaml"
+#      ; standard_library = "/Users/darth_sky/.opam/default/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "cc"
+#      ; ocamlc_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
+#      ; ocamlc_cppflags =
+#          [ "-D_FILE_OFFSET_BITS=64"; "-I/opt/homebrew/opt/llvm/bin/include" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
+#      ; ocamlopt_cppflags =
+#          [ "-D_FILE_OFFSET_BITS=64"; "-I/opt/homebrew/opt/llvm/bin/include" ]
+#      ; bytecomp_c_compiler =
+#          [ "cc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-I/opt/homebrew/opt/llvm/bin/include"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "cc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-I/opt/homebrew/opt/llvm/bin/include"
+#          ]
+#      ; native_c_libraries = [ "-lm" ]
+#      ; native_pack_linker = [ "ld"; "-r"; "-o" ]
+#      ; cc_profile = []
+#      ; architecture = "arm64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "macosx"
+#      ; asm = [ "cc"; "-c"; "-Wno-trigraphs" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "aarch64-apple-darwin22.1.0"
+#      ; target = "aarch64-apple-darwin22.1.0"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X031"
+#      ; cmi_magic_number = "Caml1999I031"
+#      ; cmo_magic_number = "Caml1999O031"
+#      ; cma_magic_number = "Caml1999A031"
+#      ; cmx_magic_number = "Caml1999Y031"
+#      ; cmxa_magic_number = "Caml1999Z031"
+#      ; ast_impl_magic_number = "Caml1999M031"
+#      ; ast_intf_magic_number = "Caml1999N031"
+#      ; cmxs_magic_number = "Caml1999D031"
+#      ; cmt_magic_number = "Caml1999T031"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
+#  }
+$ (cd _build/default && /Users/darth_sky/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.class.objs/byte -I lib/.class.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 3, characters 4-8:
+> 3 | let even n = n mod 2 = 0
+>         ^^^^
+> Error (warning 32 [unused-value-declaration]): unused value even.
+> File "bin/main.ml", line 4, characters 4-5:
+> 4 | let x = [3; 7; 2]
+>         ^
+> Error (warning 32 [unused-value-declaration]): unused value x.
+> File "bin/main.ml", line 6, characters 8-11:
+> 6 | let rec fib a b n = if n = 0 then a else fib (a + b) a (n - 1)
+>             ^^^
+> Error (warning 32 [unused-value-declaration]): unused value fib.
+> File "bin/main.ml", line 8, characters 4-12:
+> 8 | let max_list list = ""
+>         ^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value max_list.
+> File "bin/main.ml", line 8, characters 13-17:
+> 8 | let max_list list = ""
+>                  ^^^^
+> Error (warning 27 [unused-var-strict]): unused variable list.
+> File "bin/main.ml", line 14, characters 4-7:
+> 14 | let y_2 = y 2
+>          ^^^
+> Error (warning 32 [unused-value-declaration]): unused value y_2.
+> File "bin/main.ml", line 15, characters 4-13:
+> 15 | let applied_y = apply y 2
+>          ^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value applied_y.
+> File "bin/main.ml", line 17, characters 8-17:
+> 17 | let rec max_list' (list: int list) (cur : int) = match list with
+>              ^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value max_list'.
+> File "bin/main.ml", line 21, characters 8-17:
+> 21 | let rec fold_left (f, acc, xs) =
+>              ^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value fold_left.
+> File "bin/main.ml", line 27, characters 1-22:
+> 27 |  val func : int -> int
+>       ^^^^^^^^^^^^^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value func.
+> File "bin/main.ml", line 31, characters 1-23:
+> 31 |  val hello : int -> int
+>       ^^^^^^^^^^^^^^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value hello.
+> File "bin/main.ml", line 35, characters 6-17:
+> 35 |   let hello_value = 12
+>            ^^^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value hello_value.
+> File "bin/main.ml", line 41, characters 2-21:
+> 41 |   val hi : int -> int
+>        ^^^^^^^^^^^^^^^^^^^
+> Error (warning 32 [unused-value-declaration]): unused value hi.
+[2]

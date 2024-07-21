@@ -1,0 +1,92 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\newcommand{\sumn}{\sum_{k=1}^{n}}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+\newcommand\suminf{\sum_{n=0}^{\infty}}
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+
+\question{1}{The First Problem}
+
+Let $d = \gcd(x,y)$, $x=x'd, y=y'd$. Then $\gcd(x', y') =1$ Then
+\[(x'd)^2 = 2(y'd)^2\implies x'^2 = 2y'^2\]
+Then we deduced that $x'$ and $y'$ are even, which contradicts to that fact that $\gcd(x',y')=1$
+
+\question{1.6.2}{}
+\begin{align*}
+    n^2 + 7n + 12 = (n^2 + n) + (6n + 12)
+\end{align*}
+
+\question{1.7}{}
+Let $n = 7m^2$, then $7n + 2 = 7(7m^2) + 2 = (7m)^2 + 2$
+This satisfies that
+
+\[(7m)^2< (7m)^2 + 2 < (7m)^2 + 14m + 1 = (7m+1)^2\]
+
+\question{2.3.4}{}
+\[D_n = \{d | d \text{ divies } n\}\]
+\[D_r \cap D_s = \{d | d \text{ divides } r \text{ and } d \text{ divides } s\}\]
+Let $m = \gcd(r, s)$
+\[D_m = \{d | d \text{ divides } m\}\]
+We now have to show that \[D_m \subseteq D_r \cap D_s\].
+And
+\[D_r \cap D_s \subseteq D_m\]
+
+Let $d \in D_m$, then $d \text{ divides } m$. With $m$ dividing $r$ and $s$, we have $d$ divides $r$ and $s$.
+Thus, 
+\[D_m \subseteq D_r \cap D_s\]
+On the other hand, Let $d \in D_r \cap D_s$, we have $d$ divides both $r$ and $s$, then $d$ divides $m$ by the definition of $m$.
+Therefore, \[D_r \cap D_s \subseteq D_m\]
+Together, we have proven that 
+\[D_m = D_r \cap D_s\]
+\pagebreak
+\question{2.4}{}
+Those subsets can be divided into $n + 1$ groups, and in each group, each subset has $r$ elements for $r = 0, 1, \cdots, n$.
+So in total there are
+\[\sum_{r=0}^{n}\binom{n}{r}\]
+such subsets
+
+\end{document}
+

@@ -1,0 +1,262 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ \#2}
+\newcommand{\hmwkDueDate}{February 12, 2014}
+\newcommand{\hmwkClass}{Calculus}
+\newcommand{\hmwkClassTime}{Section A}
+\newcommand{\hmwkClassInstructor}{Professor Isaac Newton}
+\newcommand{\hmwkAuthorName}{\textbf{Josh Davis} \and \textbf{Davis Josh}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 3:10pm}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+\pagebreak
+
+\begin{homeworkProblem}
+We choose a number from the set $\{1,2,\cdots,100\}$ uniformly at random and denote
+this number by $X$. For each of the following choices decide whether the two events in question
+are independent or not.
+
+\begin{enumerate}
+    \item $A = \{X \text{ is even}\}$, $B = \{X \text{ is divisible by 5}\}$
+    \item $C = \{x \text{ has two digits}\}$, $D = \{ X \text{ is divisible by 3}\}$
+    \item $E = \{X \text{ is prime}\}$, $F = \{X \text{ has a digit 5}\}$
+\end{enumerate}
+\solution 
+\\\\
+Recall the definition of independency: if $X$ and $Y$ are two independent variables, then
+$P(X\cap Y) = P(X)\cdot P(Y)$.
+\\\\
+From there, we have $P(A) = 0.5, P(B) = 0.2, P(A\cap B) = \frac{\#\{10,20,\cdots, 100\}}{100} = \frac{10}{100} = \frac{1}{10} = 0.1$
+We have 
+\[
+    P(A)\cdot P(B) = 0.5 \times 0.2 = 0.1 = P(A\cap B)
+\]
+Thus $A$ and $B$ are independent.\\
+\\
+Likewise, we compute \[P(C) = \frac{9}{10}\]
+and \[P(D) = \frac{\left[\frac{100}{3}\right]}{100} = \frac{34}{100}\]
+and \[P(C\cap D) = \frac{\#\{12,15,18,\cdots, 99\}}{100} = \frac{31}{100}\]
+Since
+\[P(C)\cdot P(D) = \frac{297}{1000}\neq \frac{31}{100} = P(C\cap D)\]
+$C$ is not independent from $D$.
+\\\\
+There are $25$ primes less than $100$, and we know that
+\[F = \{5, 15, 25, 35, 45, 50,\cdots 59, 65, 75, 85, 95\}\]
+Thus,
+\[\#F = 5 + 10 + 4 = 19\]
+We have
+\[P(E) = \frac{1}{4}, P(F) = \frac{19}{100}\]
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+Suppose there are two student assistants working as typists in the main office of the
+Statistics \& Applied Probability Department at UCSB. The number of typos per page made
+by student assistant $A$ is a Poisson random variable with parameter $\lambda_A = 1$. The number of
+typos per page made by student assistant $B$ is also a Poisson random variable with an average
+of 10 typos per page. One of the professors in the department asks one of the students to type up a letter. From
+experience, this work will be done with 1/3 probability by student A and with 2/3 probability
+by student B.
+\\\\
+(a) What is the probability that the typewritten letter will contain exactly one typo?
+
+(b) It turns out that the typewritten letter does not contain any typos. Given this informa
+tion, what is the probability that student B typewrote this letter?
+\\\\
+\solution
+\\\\
+(a)
+Let $T_A, T_B$ be the number of typos made by each assistant in each page respectively.
+First off we determine the Possion variable of student $B$, which is 
+\[
+    P(T_B = k) = \frac{\lambda_B^k\exp(-\lambda_B)}{k!},
+    P(T_A = k) = \frac{1^k\exp(-1)}{k!}
+\]
+where $\lambda_B = 10$.
+Thus by \textbf{total probability}, 
+\begin{align*}
+P(\text{exactly one typo}) &= P(\text{exactly one typo}|\text{student A selected})P(\text{student A selected}) \\ 
+                           &+ P(\text{exactly one typo}|\text{student B selected})P(\text{student B selected}) \\
+                           &= \frac{1}{3}P(T_A = 1|\text{student A selected}) + \frac{2}{3}P(T_B = 1|\text{ student B selected}) \\
+                           &= \frac{1}{3}P\left(T_A = 1\right) + \frac{2}{3}P(T_B = 1) \\
+                           &= \frac{1}{3}e^{-1} + \frac{2}{3}10e^{-10} \approx 12.3\%
+\end{align*}
+
+(b)
+By the Bayes formula, 
+\begin{align*}
+    P(\text{student B } | \text{ no typo}) &= P(\text{no typo } | \text{ student B})\cdot \frac{P(\text{student B})}{P(\text{no typo})} \\
+                                           &= \frac{2}{3}\frac{e^{-10}}{P(T_A = 0 | \text{student A})P(\text{student A}) + P(T_B = 0| \text{student B})P(\text{student B}) }\\
+                                           &= \frac{2}{3}\frac{e^{-10}}{1/3\cdot e^{-1} + 2/3\cdot e^{-10}} \\
+                                           &\approx 0.2\%
+\end{align*}
+
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Suppose you are rolling a fair die $600$ times independently. Let $X$ count the number
+of sixes that appear.
+\\\\
+(a) What type of random variable is $X$? Specify all parameters needed to characterize $X$ as
+well as the state space $S_X$ of $X$.
+
+(b) Find the probability that you observe the number 6 at most 100 times.
+
+(c) Use a famous limit theorem (which one?) to show why the probability in (b) can be
+approximated by the value $\frac{1}{2}$
+\\\\
+\solution 
+
+(a)
+We observe that $X$ is Binomial distribution whose PMF is 
+\[
+    P(X = k) = \binom{600}{k}\left(\frac{5}{6}\right)^{600-k}\left(\frac{1}{6}\right)^{k}
+\]
+where $S_X = \{0,1,2,\cdots,600\}$ 
+\\\\
+(b)
+We need to compute 
+\begin{align*}
+    P(X\le 100) &= \sum_{k=0}^{100}P(X=k) \\
+                &= \sum_{k=0}^{100}\binom{600}{k}\left(\frac{5}{6}\right)^{600-k}\left(\frac{1}{6}\right)^{k}
+\end{align*}
+
+From Wolfram Alpha, the summation above approximately equals to the numerical value $0.53$
+
+(c)
+
+\end{homeworkProblem}
+
+\end{document}

@@ -1,0 +1,442 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{cancel}
+\usepackage{fdsymbol}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\newcommand{\solution}{\vspace{.10in}\textbf{Solution: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+
+
+\question{2}{Problem 1}
+Combination of Lecture 10 and 11. The trick is that this sample space does not uniform
+probability. You will have to compute the probabilities. For example, if the sample space is all ways Dwayne
+can take $3$ shots on net, then an outcome where he scores $3$ goals has probability $(1/6)^3$. Technically this relates to 
+Lecture $14$ on independent events - you may assume each shot Dwayne takes is independent of the others. I accidentally jumped the shark and introduced this concept too
+early in the assigenment.
+
+Dwayne Jetski is a famous hockey player who has powerful (though sometimes wild) slap shot. Any time he shoots the puck on goal, he score with probability $1/6$ and the puck goes into the
+crowd with probability $1/3$.
+
+\part{a} In a typical night, Dwayne has $10$ shots on goal. What is the probability that Dwayne scores at least $1$ goal?
+
+\solution
+By complement, the probability that Dwayne scores at least $1$ goal is $1 - (5/6)^{10}$.
+
+\part{b} 
+A hat trick is where a player gets 3 goals in a night. What is the probability that Dwayne scores a hat trick (that is he scores at least 3 goals)?
+
+\solution
+The probability that Dwayne scores a hat trick is $(1/6)^3$.
+
+\part{c}
+Over a stretch of 10 games Dwayne takes 50 shots. What is the probability that Dwayne scores exactly 10 goals or exactly 10 shots go into the crowd?
+
+\solution
+The probability that Dwayne scores exactly 10 goals is 
+\[
+\binom{50}{10} \left(\frac{1}{6}\right)^{10} \left(\frac{5}{6}\right)^{40} 
+\]
+
+The probability that Dwayne scores exactly 10 shots into the crowd is
+
+\[
+\binom{50}{10} \left(\frac{1}{3}\right)^{10} \left(\frac{2}{3}\right)^{40}
+\]
+
+The probability that Dwayne scores exactly 10 goals or exactly 10 shots go into the crowd is the sum of these two probabilitie
+\[
+\binom{50}{10} \left(\frac{1}{6}\right)^{10} \left(\frac{5}{6}\right)^{40} + \binom{50}{10} \left(\frac{1}{3}\right)^{10} \left(\frac{2}{3}\right)^{40}
+\]
+
+\question{3}{Lectures to Reference: Paradox University? Could that be a hint?}
+There are 100 students enrolling in computer science in Paradox University. Each student must take 5 courses as follows:
+\begin{itemize}
+\item There are 6 first year computer science courses - each student must choose 2 of them.
+\item For each comp sci course there are 2 tutorials and each student must choose 1.
+\item There are 15 electives. Among these electives are 7 humanities courses. Each student must choose 3 electives, and they must take at least one humanities (though they may take up to 3 humanities courses if they wish).
+\end{itemize}
+
+A schedule is \textit{unique} if it is different from every other schedule in at least one course or tutorial.
+\part{a} How many unique schedules are there?
+
+\solution
+
+There are $6$ first year computer science courses and each student must choose $2$ of them. There are $\binom{6}{2} = 15$ ways to choose $2$ courses from $6$ courses.
+There are $2$ tutorials for each course and each student must choose $1$ of them. There are $2^2 = 4$ ways to choose $1$ tutorial from $2$ tutorials.
+There are $7$ electives in humanities and $15-7=8$ other electives. Each student must choose $3$ electives and at least $1$ humanities.
+So there are
+\begin{align*}
+  \binom{7}{1}\binom{8}{2} + \binom{7}{2}\binom{8}{1} + \binom{7}{3}\binom{8}{0} &= 7\cdot 28 + 21\cdot 8 + 35 = 399
+\end{align*}
+ways to choose electives.
+
+So there are $15\cdot 4 \cdot 399 = 23940$ unique schedules.
+
+\part{b} None of the students know what courses to take, so they all choose uniformly at random from the set of unique schedules. What is the probability that all students have a unique schedule?
+
+\solution
+
+This is a birthday problem. The probability that all students have a unique schedule is
+\[
+\frac{23940!}{(23940-100)! 23940^{100}} = \frac{23940!}{(23840)! 23940^{100}}
+\]
+
+\part{c}
+What is the probability that exactly 2 students share the same schedule, but everyone else has a unique schedule?
+
+\solution
+
+The probability that exactly 2 students share the same schedule, but everyone else has a unique schedule is
+\[
+\frac{\binom{100}{2} \cdot 23940!}{(23940-98)! 23940^{98}}
+\]
+
+\part{d}
+What is the probability that 2 or 3 students share the same schedule, but everyone else has a unique schedule?
+
+\question{4}{}
+Out of 1000 people total that took COMP2804 last year, 820 passed the final exam. 800 students studied for the final exam. 60 people who did not study still passed the final exam. Use these numbers to define initial probabilities and answer the following questions.
+
+\part{a} What is your probability of passing the final exam if you study?
+
+\solution
+
+Let $A$ be the event you pass the final exam and $B$ be the event you study for the final exam. Then
+\begin{equation*}
+  P(A) = \frac{820}{1000} = 0.82, P(B) = \frac{800}{1000} = 0.8, P(A|\overline{B}) = \frac{60}{200} = 0.3
+\end{equation*}
+
+The problem ask us to find $P(A|B)$. We can use total probability theorem to find $P(A|B)$.
+\begin{align*}
+  0.82 = P(A) &= P(A|B)P(B) + P(A|\overline{B})P(\overline{B}) \\
+       &= P(A|B)\times 0.8 + 0.3 \times 0.2 \\ 
+       &= P(A|B)\times 0.8 + 0.06
+\end{align*}
+
+Thus 
+\begin{equation*}
+  P(A|B) = \frac{P(A) - 0.06}{0.8} = \frac{0.82 - 0.06}{0.8} = 0.95
+\end{equation*}
+
+\part{b} Prove that 
+\begin{equation*}
+  P(A|B) + P(\overline{A}|B) = 1
+\end{equation*}
+
+\solution
+
+Applying Bayes' rule, and then the total probability theorem, we have
+\begin{align*}
+  P(A|B) + P(\overline{A}|B) &= \frac{P(B|A)P(A)}{P(B)} + \frac{P(B|\overline{A})P(\overline{A})}{P(B)} \\
+      &= \frac{P(B)}{P(B)} \\
+      &= 1
+\end{align*}
+
+\part{c} You know someone who failed the final. What is the probability that they studied?
+
+\solution
+
+We need to find $P(B|\overline{A})$. We can use Bayes' rule to find $P(B|\overline{A})$.
+
+\begin{align*}
+  P(B|\overline{A}) &= \frac{P(\overline{A}|B)P(B)}{P(\overline{A})} \\
+      &= \frac{P(\overline{A}|B)P(B)}{1 - P(A)} \\
+      &= \frac{(1-P(A|B))P(B)}{1 - P(A)} \\
+      &= \frac{(1-0.95)\times 0.8}{1 - 0.82} \\
+      &= 0.2
+\end{align*}
+
+\question{5}{}
+You roll 5 fair 6-sided dices. Let $C$ be the event that there are exactly $3$ dice that are showing the same number. Let $D$ be the event that there is at least one number $i$, $1 \le i \le 6$, such that exactly $2$ of the $5$ dice are showing $i$.
+
+\part{a} What is $P(C)$?
+
+\solution
+
+Let $D=\{d_1,\cdots,d_5\}$ be the set of dices.
+The denominator of $P(C)$ should be $6^5$ for sure.
+For the nominator, we can express the set, denoted by $A$, as follows
+\begin{align*}
+  A &= \left\{ D_{1} \cup D_{2} | \{c_1,c_2,c_3\}\in \{1,\cdots, 6\}, D_1\subset D, |D_1| = 3, D_2 \subset D-D_1, |D_2| = 2 \right\}
+\end{align*}
+
+Thus,
+\begin{align*}
+    A &= \binom{6}{3}\times \binom{5}{3}
+\end{align*}
+
+Thus
+\begin{equation*}
+  P(C) = \frac{\binom{6}{3}\times \binom{5}{3}}{6^5}
+\end{equation*}
+
+\part{b} What is $P(D)$?
+
+\solution
+
+We express the total set $S$ by
+\begin{align*}
+  S &= \left\{(d_1,d_2,d_3,d_4,d_5)| d_i\in \{1,\cdots, 6\}\right\}
+\end{align*}
+We have $|S| = 6^5$.
+
+We express the set $B$ by
+\begin{align*}
+  B &= \left\{D_1\cup D_2 \cup D_3 \cup D_4 | \{c_1,c_2,c_3,c_4\}\subset \{1,\cdots, 6\}, D_1\subset D, |D_1|=2, |D_i| = 1, i > 1 \right\}\\
+    &\bigcup \left\{D_1\cup D_2 \cup D_3| \{c_1,c_2,c_3\}\subset \{1,\cdots, 6\}, D_1\subset D, D_2\subset D-D_1, |D_1| = 2, |D_2| = 2 \right\}\\
+    &\bigcup \left\{D_1\cup D_2| \{c_1,c_2\}\subset \{1,\cdots, 6\}, D_1\subset D, |D_1| = 2, D_2=D-D_1, \right\}
+\end{align*}
+
+Thus 
+\begin{align*}
+  |B| &= \binom{6}{4}\times \binom{5}{2}\times 3\times 2 + \binom{6}{3}\times \binom{5}{2}\times \binom{3}{2} + \binom{6}{2}\times \binom{5}{2}  \\
+      &= 1650
+\end{align*}
+
+Thus, 
+\begin{equation*}
+  P(D) = \frac{|B|}{|S|} = \frac{1650}{6^5}
+\end{equation*}
+
+\part{c}  What is $P(C \cup D)$?
+
+\solution
+
+We compute $P(C\cap D)$.
+\begin{equation*}
+  P(C\cap D) = \binom{6}{2} \times \binom{5}{2} = 150
+\end{equation*}
+
+
+\begin{align*}
+  P(C\cup D) &= P(C) + P(D) - P(C\cap D) \\
+  &= \frac{1}{6^5}(200 + 1650) - \frac{150}{6^5} \\ 
+  &= \frac{1850}{6^5} - \frac{150}{6^5} \\
+  &= \frac{1700}{6^5}
+\end{align*}
+
+\part{d}
+
+Are $C$ and $D$ independent events? Explain your answer.
+
+\solution
+
+We just need to check whether $P(C\cap D) = P(C)P(D)$.
+
+\begin{align*}
+  P(C)P(D) &= \frac{200}{6^5}\times \frac{1650}{6^5} \\
+          &= \frac{6875}{1,259,712} \\
+          & \neq \frac{150}{6^5} \\
+          &= P(C\cap D)
+\end{align*}
+
+Thus $C$ and $D$ are not independent events.
+
+\question{6}{}
+When playing poker you use a standard deck of cards consists of 52 cards. 
+Each card consists of a rank chosen from 13 available ranks and a suit chosen from 4 available suits. The ranks are, in order from least to greatest, $\{2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A\}$.
+The suits are $\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\}$. All suits are considered equal value. Note that there are 4 cards of any given rank. For example, all cards of rank 7 would be
+$\{7\clubsuit, 7\diamondsuit, 7\heartsuit, 7\spadesuit\}$. In poker you are dealt a hand of $\mathbf{5}$ cards.
+
+\newcommand{\card}{\mathbf{Card}}
+
+\textbf{Comment:} All cards can be denoted as the set $\card = R\times S$, where $R$ is the set of ranks and $S$ is the set of suits. For example, the card $7\clubsuit$ can be denoted as $(7, \clubsuit)$.
+
+\part{a} What is the probability that you have 4 of a kind? That is, what is the probability that you have 4 cards of the same rank?
+
+\solution
+
+Note that the set of all possible 5 cards, as denoted by $F=\{T|T\subset \card, |T| = 5\}$. The size of which is
+\begin{equation*}
+  |F| = \binom{52}{5}
+\end{equation*}
+
+The set of all possible 4 of a kind, as denoted by $A$, is equal to
+\begin{equation*}
+  A = \left\{(r',s')\bigcup_{s\in S}(r,s)|r, r'\in R, r\neq r', s'\in S\right\}
+\end{equation*}
+Thus
+\begin{align*}
+  |A| &= \#\{(r,r',s)|r, r'\in R, r\neq r', s'\in S \}\\
+      &= (|R|^2 - |R|)\times |S| \\ 
+      &= (13^2-13) \times 4 \\
+      &= 624
+\end{align*}
+
+So the probability that you have 4 of a kind is
+\begin{equation*}
+  \frac{|A|}{|F|} = \frac{624}{\binom{52}{5}}
+\end{equation*}
+
+\part{b} What is the probability that the highest card in your hand is a $7$? We will consider $A$ to be the highest rank overall, thus $A > 7$ and there are $5$ ranks below $7$.
+
+\solution
+
+We express the set in which the highest card in your hand is $7$ by $B$. We have 
+\begin{equation*}
+  B = \left\{\{(7,s)\}\cup T|s\in S, T\subset \{2,3,\cdots, 7\} \times S - \{(7,s)\}, |T| = 4\right\}
+\end{equation*}
+
+Thus,
+\begin{align*}
+  |B| &= \#\{(s, T)|s\in S, T\subset \{2,3,\cdots, 7\} \times S - \{(7,s)\}, |T| = 4\}\\
+      &= 4\times \binom{6\times4-1}{4}\\
+      &= 4\times \binom{23}{4} \\ 
+      &= 35420
+\end{align*}
+
+So the probability that the highest card in your hand is a $7$ is
+\begin{equation*}
+  \frac{|B|}{|F|} = \frac{35420}{\binom{52}{5}}
+\end{equation*}
+
+\part{c} Given that your highest card is a $7$, what is the probability that you have four 7's?
+
+\solution
+
+We need to evaluate
+\begin{equation*}
+  P(\text{I have four 7}|\text{highest card is 7})
+\end{equation*}
+
+The size of the sample space $F$ in which the highest card is $7$ is given by
+\begin{equation*}
+  F = \left\{ (7, s)\cup T | s\in S, T\subset\{7\}\times (S-\{s\}) \cup \{2,\cdots,6\} \times S, |T|=4 \right\}
+\end{equation*}
+
+evaluate $|F|$. we obtain
+\begin{align*}
+  |F| &= 4 \times \binom{1\times 3 + 5\times 4}{4}\\
+      &= 4 \times \binom{23}{4} 
+\end{align*}
+
+We express the set in which the highest card in your hand is $7$ and you have four 7's by $C$. We have
+\begin{equation*}
+  C = \left\{\{\prod_{s\in S} (7,s)\cup (r,s'')|s''\in S, r\in R-\{7\} \right\}
+\end{equation*}
+Thus, 
+\begin{align*}
+  |C| &= \#\{(r,s'')|s''\in S, r\in R-\{7\} \}\\
+      &= |S|\times (|R| - 1) \\
+      &= 4 \times 12 \\
+      &= 48
+\end{align*}
+
+So the probability that the highest card in your hand is a $7$ and you have four 7's is
+\begin{equation*}
+  \frac{|C|}{|F|} = \frac{48}{4\times \binom{23}{4}}
+\end{equation*}
+
+\part{d}
+Given that your highest card is a 7, what is the probability that you have a full house? A full house is three cards of one rank and two cards of another rank.
+
+\solution
+
+Given the information, we will need to evaluate
+\begin{itemize}
+  \item the number of combinations of 3 cards of one rank
+  \item the number of combinations of 2 cards of another rank
+\end{itemize}
+
+Thus we can express the target set $D$ by
+\begin{align*}
+  D &= \left\{\{(\{(s_1,7),(s_2,7)\},\{(s'_1,r),(s'_2,r),(s'_3,r)\})\}\cup T|  \{s_1, s_2\}, \{s'_1, s'_2, s'_3\}\subset S, r\in \{2,3,\cdots, 6\} \right\} \\
+    &\bigcup \left\{\{(\{(s_1,r),(s_2,r)\},\{(s'_1,7),(s'_2,7),(s'_3,7)\})\}\cup T| \{s_1, s_2\}, \{s'_1, s'_2, s'_3\}\subset S, r\in \{2,3,\cdots, 6\} \right\}
+\end{align*}
+
+Thus,
+\begin{align*}
+  D &= \binom{4}{2}\times \binom{4}{3}\times 5 + \binom{4}{2}\times \binom{4}{3}\times 5 \\
+    &= 480
+\end{align*}
+
+So the probability that the highest card in your hand is a $7$ and you have a full house is
+\begin{equation*}
+  \frac{|D|}{|F|} = \frac{480}{4\times \binom{23}{4}}
+\end{equation*}
+
+\question{7}{Snake eat Snake}
+You are on a plane with Samuel L. Jackson when suddenly a crate of 100 snakes opens up. Sam Jackson shouts at the snakes, startling them. As a result each snake bites the tail of another snake, possibly their own. Each snake bites exactly one tail, and each tail is bitten exactly once. Each possible outcome of the snakes biting one another has uniform probability. For this question it may be useful to number the snakes 1..100.
+
+\part{a} How many possible outcomes are there?
+
+\solution
+
+There are $100!$ ways to order the snakes.
+
+\part{b} What is the probability that each snake bites their own tail?
+
+\solution
+The probability is $\frac{1}{100!}$
+
+\part{c}
+What is the probability that all 100 of the snakes form a cycle? See Figure 1 for an example of a cycle of snakes.
+
+\solution
+
+The probability is
+\begin{equation*}
+  \frac{99\times 98 \times 97\cdots 1}{100!} = \frac{1}{100}
+\end{equation*}
+
+In general, if there are $n$ snakes forming a cycle, there are $(n-1)!$ such results, with corresponding probability
+\[\frac{(n-1)!}{n!}=\frac{1}{n}\]
+
+
+\solution
+Let $n=100$
+Suppose we have a largest cycle $A$ with $n-k$ snakes, Now in $A$, all snakes have $(n-k-1)!$ to bite each other.
+And the rest of $k$ snakes have $k!$ way to bite each other. Therefore, we have the following number of results
+\[\binom{n}{k} k!(n-k-1)!=\frac{n!}{k!(n-k)!} k!\left( n-k-1\right)  !=\frac{n!}{n-k}\]
+So the probability to get these results is
+\[\frac{1}{n!}\frac{n!}{n-k} = \frac{1}{n-k}\]
+These results are the one having a largest cycle with size $(n-k)$.
+So the probability of that there are > 50 snakes in the largest cycle is
+
+\begin{equation*}
+  \sum_{k=0}^{51} \frac{1}{n-k} = H_{100} - H_{50}
+\end{equation*}
+
+\end{document}

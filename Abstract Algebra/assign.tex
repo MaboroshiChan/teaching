@@ -1,0 +1,398 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+
+\usepackage[utf8]{inputenc}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+morekeywords={self},              % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Section \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment 2\ \#2}
+\newcommand{\hmwkDueDate}{\today}
+\newcommand{\hmwkClass}{Investigating Dynamic System}
+\newcommand{\hmwkClassTime}{Section A}
+\newcommand{\hmwkClassInstructor}{Professor J}
+\newcommand{\hmwkAuthorName}{\textbf{V} \and \textbf{U}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 3:10pm}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section{Problem 1}
+
+Show that any product of $d$ consecutive integers is divisible by $d!$
+(Suggestion:  You know something that should make this easy.)
+
+\begin{proof}
+    We need to show $d!$ divides $n(n+1)(n+2)\cdots(n+d-1)$ for all $n\in\mathbb{Z}$.
+    We know that 
+    \begin{equation*}
+        \frac{n(n+1)\cdots (n+d-1)}{d!} = \frac{(n+d-1)!}{d!(n-1)!} = \binom{n+d-1}{d}
+    \end{equation*}
+    is an integer. Therefore, $d!$ divides $n(n+1)(n+2)\cdots(n+d-1)$ for all $n\in\mathbb{Z}$.
+\end{proof}
+
+\section{Problem 2}
+Let
+\begin{equation}
+    f(t) = a_0 + a_1t + \cdots + a_nt^n \in \mathbb{R}[t]
+\end{equation}
+And let $c=1/(a_n)^{1/n}$.
+Let
+\begin{equation}
+    g(t) = f(ct - a_{n-1}/na_n) = b_0 + b_1t + \cdots + b_{n-1}t^{n-1} + b_nt^n
+\end{equation}
+
+(a) Compute $b_0$. 
+
+\solution
+
+\begin{align*}
+    b_0 &= g(0) = f(-a_{n-1}/na_n)
+\end{align*}
+
+(b) Compute $b_{n-1}$
+
+\solution
+
+We need only to compute the coefficients of $t^{n-1}$ in $g(t)$, which is the coefficient in 
+\begin{equation}
+    a_{n-1}\left(ct-\frac{a_{n-1}}{na_n}\right)^{n-1} + a_n\left(ct-\frac{a_{n-1}}{na_n}\right)^n
+\end{equation}
+
+which is
+\begin{align*}
+    &a_{n-1}c^{n-1} - \binom{n}{n-1}(c)^{n-1}\left(\frac{a_{n-1}}{na_n}\right)
+    = a_{n-1}\frac{1}{a_n} \\
+    &= a_{n-1}\left(\frac{a_{n-1}}{a_n} - 1\right)c^{n-1}
+\end{align*}
+
+(c) Compute $b_n$
+
+\solution
+
+We need only to compute the coefficients of $t^{n}$ in $g(t)$, which is the coefficient in
+
+\begin{equation}
+    a_n\left(ct-\frac{a_{n-1}}{na_n}\right)^n
+\end{equation}
+
+which is
+\begin{equation}
+    b_n=a_nc^n = a_n \cdot \frac{1}{a_n} = 1
+\end{equation}
+
+\section{Problem 3}
+
+Let $p$ be prime 
+
+(a) Show that: 
+\begin{equation*}
+    \binom{p}{k} =_p 0 \text{ for } 0 < k < p
+\end{equation*}
+
+\begin{proof}
+    We know that 
+    \begin{equation*}
+        \binom{p}{k} = \frac{p!}{k!(p-k)!}
+    \end{equation*}
+    Since $p$ is prime, $p$ does not divide $k!$ or $(p-k)!$. Therefore, $p$ divides $p!$ but not $\binom{p}{k}$. Hence, $\binom{p}{k} =_p 0$ for $0 < k < p$.
+\end{proof}
+
+(b) Let    $ a=1 + bp^h$      with $h > 0$ and $\gcd(p, b)  =  1$.       Show that:   
+$a^p   =   1 + cp^{h+1}$     with   $\gcd(p, c)  =  1$,    unless$ p = 2$ and $h = 1$.
+
+\solution
+
+\begin{proof}
+    We know that 
+    \begin{align*}
+        a^p = (1 + bp^h)^p &= \sum_{k=0}^p \binom{p}{k} (bp^h)^k\\ 
+        &= 1 + \sum_{k=1}^{p} \binom{p}{k} (bp^h)^k\\
+        &= 1 + \sum_{k=1}^{p} p\left(\binom{p}{k} \Big/ p\right)b^kp^{hk-h}\cdot p^h\\
+        &= 1 + p^{h+1}\sum_{k=1}^{p} \binom{p}{k} \Big/ p\cdot b^kp^{hk-h}\\
+    \end{align*}
+\end{proof}
+Let \[c = \sum_{k=1}^{p} \binom{p}{k} \Big/ p\cdot b^kp^{hk-h}\]. Let's look at the first term of the sum. We know that
+
+\[\binom{p}{1} \Big/ p\cdot b^kp^{h-h} = b^k\]
+
+which is coprime to $p$ since $\gcd(p, b) = 1$. Therefore, $c$ is coprime to $p$. Hence, $\gcd(p, c) = 1$.
+
+\qed
+
+(c) In the multiplicative group $(\mathbb{Z}_{p^e})^{*}$, $[1+p]$ has order $p^{e-1}$.
+
+\begin{proof}
+    Let $c_0 = 1$, we define $c_n$ in the following way:
+    \begin{equation*}
+        (1 + c_{n-1}p^{n - 1})^{p} = 1 + c_{n}p^{n}
+    \end{equation*}
+    Thus,
+    \begin{equation*}
+        (1 + p)^{p^{e-1}} = 1 + c_{e-1}p^{e} =_p 1 
+    \end{equation*}
+    Conversely, if $h < e - 1$, then
+    \begin{equation*}
+        (1 + c_{h}p^{h})^{p} = 1 + c_{h+1}p^{h+1} \neq_p 1
+    \end{equation*}
+    Therefore, $[1+p]$ has order $p^{e-1}$.
+\end{proof}
+
+(d) Prove that $(\mathbb{Z}_{p^e})^{*}$ is cyclic.
+
+\begin{proof}
+    From (c), we know that $[1+p]$ has order $p^{e-1}$ which is exactly the order of $(\mathbb{Z}_{p^e})^{*}$. Therefore, $(\mathbb{Z}_{p^e})^{*}$ is cyclic.
+\end{proof}
+
+(e) For $e > 2$, prove that
+\begin{equation*}
+    \left(\mathbb{Z}_{2^e}\right)^{*} \cong \left\{\pm1\right\}\times \left<[5]\right>
+\end{equation*}
+
+where $[5]$ has order $2^{e-2}$.
+\begin{proof}
+    From (b), 
+    \begin{align*}
+        5^{p^{h}} &= (1 + 2^2)^{p^{h}} = 1 + c2^{2 + h}\\
+    \end{align*}
+    Thus, $5^{p^h} =_p 1 \iff h = e-2$. Therefore, $[5]$ has order $2^{e-2}$.
+    Note that for $e > 2$ $5^{p^e} + 5^{p^e} = 2\cdot 5^{p^e}\neq_{p^e} 0$.
+    A homomorphism from $\left\{\pm1\right\}\times \left<[5]\right>$ to $\left(\mathbb{Z}_{2^e}\right)^{*}$ can be given by: $(a, b)\mapsto ab$.
+    This map is injective since $5^{p^e} + 5^{p^e} = 2\cdot 5^{p^e}\neq_{p^e} 0$. This map is surjective since $\left|\left\{\pm1\right\}\times \left<[5]\right>\right|=\left|\mathbb{Z}_{p^e}\right|=2^{e-1}$.
+    Therefore, \[\left(\mathbb{Z}_{2^e}\right)^{*} \cong \left\{\pm1\right\}\times \left<[5]\right>\].
+
+\end{proof}
+
+\section*{Problem 4}
+Recall that a ring homomorphism $f: A\to A'$ satisfies
+\begin{itemize}
+    \item $f(a + b) = f(a) + f(b)$
+    \item $f(ab) = f(a)f(b)$
+    \item $f(1) = 1$
+\end{itemize}
+A composition of ring homomorphisms is a ring homomorphism.
+
+(a) Let $p$ be a prime, Let $\mathbb{Z}_p\subseteq A$ be a commutative ring, so that $pa=0$ for all $a\in A$.
+Show that $\phi: A\to A, \phi(a)=a^p$ is a ring homomorphism. And hence likewise for $\phi_{e}(a) = a^{p^e}$
+
+\begin{proof}
+    We know that 
+    \begin{equation*}
+        \phi(a + b) = (a + b)^p = \sum_{k=0}^{p} \binom{p}{k} a^kb^{p-k} = a^p + b^p = \phi(a) + \phi(b)
+    \end{equation*}
+    and
+    \begin{equation*}
+        \phi(ab) = (ab)^p = a^pb^p = \phi(a)\phi(b)
+    \end{equation*}
+    and
+    \begin{equation*}
+        \phi(1) = 1^p = 1
+    \end{equation*}
+    Therefore, $\phi$ is a ring homomorphism.
+    Likewise, by induction, we assume that $\phi_{e-1}$ is a ring homomorphism. Then,
+    \begin{equation*}
+        \phi_{e}(a + b) = (a + b)^{p^e} = \left(a^{p^{e-1}} + b^{e^{e-1}}\right)^p = a^{p^e} + b^{p^e} = \phi_{e}(a) + \phi_{e}(b)
+    \end{equation*}
+    And
+    \begin{equation*}
+        \phi_{e}(ab) = (ab)^{p^e} = a^{p^e}b^{p^e} = \phi_{e}(a)\phi_{e}(b)
+    \end{equation*}
+    And
+    \begin{equation*}
+        \phi_{e}(1) = 1^{p^e} = 1
+    \end{equation*}
+    Therefore, $\phi_{e}$ is a ring homomorphism.
+\end{proof}
+
+(b) Show that, if $n  =  p^em$, then:
+\begin{equation*}
+    \binom{n}{d} =_p 0 \text{ if } p^e \not | d \text{ and } \binom{n}{d} =_p \binom{m}{d'} \text{ if } d=p^ed'
+\end{equation*}
+
+\begin{proof}
+    Consider the expansion of $(t + 1)^n$ in $\mathbb{Z}_{p^e}[t]$:
+    \begin{equation*}
+       \sum_{d=0}^{n}\binom{n}{d}t^d = (1 + t)^n = \left((1 + t)^{p^e}\right)^m = (1 + t^{p^e})^m = \sum_{d'=0}^{m}\binom{m}{d'}t^{p^{e}d'}
+    \end{equation*}
+    By comparing the coefficients of $t^d$ on both sides, if $p^e \not | d$, then $\binom{n}{d} =_p 0$. If $d = p^ed'$, then $\binom{n}{d} =_p \binom{m}{d'}$.
+\end{proof}
+
+
+\section{Problem 5}
+Let $f(t)\in \mathbb{C}[t]$. Show that if $f(\mathbb{Q})\subseteq \mathbb{Q}$, then $f(t)\in \mathbb{Q}[t]$.
+(Suggestion: If $\deg(f)  =  d$, apply the proof of the Interpolation theorem to: 
+$(0, f(0)), (1, f(1)), \cdots , (d, f(d)))$.
+
+\begin{proof}
+    By the Largrange Interpolation Theorem, we can express $f(t)$ as
+    \begin{equation*}
+        f(t) = \sum_{i=0}^{d}\left( f(i) \prod_{j=0, j\neq i}^{d} \frac{t - j}{i - j}\right)
+    \end{equation*}
+
+    Since $f(\mathbb{Q})\subseteq \mathbb{Q}$, we know that $f(i)\in\mathbb{Q}$ for all $i\in\mathbb{Z}$. 
+    The operations on the right hand side of the equation generate rational coefficients for $f(t)$.
+    Therefore, $f(t)\in\mathbb{Q}[t]$.
+\end{proof}
+
+\end{document}

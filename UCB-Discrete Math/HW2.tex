@@ -1,0 +1,146 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{cancel}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+
+
+\question{1}{Builup-error} 
+
+
+\question{2}{Graph proof}
+(a)
+Prove by contradiction(infinite descending):
+Define
+\begin{align*}
+    d_{-1}(v) := \#\{(w, v)\in E: w\in V\}
+\end{align*}
+to be the number of in-neighbourhoods of city $v$.
+We claim that the city with the most number of in-neighbourhoods satisfies the conditon.
+
+Let $c\in V$ be this vertex. Consider
+\[I := \{v\in V: (v, c)\in E\}\]
+\[O := \{v\in V: (c, v)\in E\}\]
+
+Cities in $I$ can reach $c$ at one road distance. And $d_{-1}(c) = |I|$ is maximized over $V$.
+Pick $o\in O$.
+
+\textbf{Claim: there is $i \in I$ such that $(o, i)\in E$}
+
+If this claim is true, then $o\to i\to c$ are two roads to $c$.
+We can easily see that $V = I\cup O$. Thus, a city in either $I$ or $O$ can reach $c$ through at most $2$ roads.
+
+Now we prove this claim. Assume the contrary, that this claim is false.
+\[\forall o\in O\forall i\in I, (o, i)\not \in E\]
+This implies that $(i, o)\in E$ instead. 
+
+The counting of in-neighbourhoods of $o$ shows that
+\begin{align*} 
+    d_{-1}(o) &= \#\{(c, o)\} + \sum_{(i, o)\in E}1\\
+              &=\#\{(c, o)\} + \sum_{i\in I}1 \\ 
+              &= 1 + \sum_{i\in I}1 = 1 + |I| > |I|\\
+              &= d_{-1}(c)
+\end{align*}
+contradicts to the maximality of $d_{-1}(c)$. 
+
+\qed
+
+(b)
+
+By induction, if $m = 1$, according to Euler theorem, there is a euler tour from A to B.
+Now assume $m \ge 2$.
+
+
+Let $(A_i, B_i), 1 \le i\le m$ be $m$ pairs of vertices with odd degrees. According to theorem.XXX, there is a walk
+from $A_m$ to $B_m$ denoted by $W_m$. Remove $W_m$ along with $(A_m, B_m)$, we obtain a graph with $m - 1$ pairs of vertices with odd degress.
+
+(c)
+
+(sufficiency)
+Base case: there is neither odd cycle or even cycle(no cycle).
+
+
+
+
+Suppose we have a cycle $T_1, T_2, T_3, \cdots, T_n, T_1$,
+Its length is even, by condition. We have $n = 2m$ Let 
+\[L = \{T_1, T_3, \cdots, T_{n-1}\}\]
+\[R = \{T_2, T_4, \cdots, T_{n}\}\]
+
+\question{6}{The bipartite graph}
+(a)
+
+\begin{align*}
+    \sum_{v \in L} d(v) &= \sum_{v\in L}\sum_{(v, w)\in E}1 \\
+                        &= \sum_{v\in L}\sum_{w\in R}1 \\
+                        &= \sum_{w\in R}\sum_{v\in L}1 \\ 
+                        &= \sum_{w\in R}\sum_{(w, v)\in E}1 \\
+                        &= \sum_{w\in R}d(w)
+\end{align*}
+
+(b)
+By definition,
+\[s = \frac{1}{|L|}\sum_{v\in L}d(v), t = \frac{1}{|R|}\sum_{w\in R}d(w)\]
+Hence,
+\begin{align*}
+    \frac{s}{t} &= \frac{\frac{1}{|L|}\cancel{\sum_{v\in L}d(v)}}{\frac{1}{|R|}\cancel{\sum_{w\in R}d(w)}} \\
+                &= \frac{\frac{1}{|L|}}{\frac{1}{|R|}} =  \frac{|R|}{|L|}
+\end{align*}
+
+(c)
+
+($\Longleftarrow$)
+Let $G$ be a graph which can be two colored.
+Let's say, that $W\subseteq V$ is the set with every vertices colored white, and
+$B\subseteq V$ is the set with every vertices colored black.
+
+Then we have \[V = W \cup B, W\cap B = \{\}\]. Since $G$ is two-colored, we can't have
+$\{w_1, w_2\} \in E, \{b_1, b_2\}\in E$ where $w_1, w_2\in W$ and $ b_1, b_2\in B$. Thus,
+\[E = W \times B\] By the definition, we conclude that $G$ is bipartite.
+
+$(\implies)$
+
+Let $V = L \times R$. Color $L$ with white, and $R$ with black respectively. The proof that show that $G$ is two-colored is trival.
+
+\end{document}

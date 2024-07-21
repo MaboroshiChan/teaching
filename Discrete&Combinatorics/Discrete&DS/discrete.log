@@ -1,0 +1,1203 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.20)  15 DEC 2022 13:37
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/Users/darth_sky/教学/Discrete&DS/discrete.tex
+(/Users/darth_sky/教学/Discrete&DS/discrete.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18> (/usr/local/texlive/2021/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count179
+\c@section=\count180
+\c@subsection=\count181
+\c@subsubsection=\count182
+\c@paragraph=\count183
+\c@subparagraph=\count184
+\c@figure=\count185
+\c@table=\count186
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen139
+\lightrulewidth=\dimen140
+\cmidrulewidth=\dimen141
+\belowrulesep=\dimen142
+\belowbottomsep=\dimen143
+\aboverulesep=\dimen144
+\abovetopsep=\dimen145
+\cmidrulesep=\dimen146
+\cmidrulekern=\dimen147
+\defaultaddspace=\dimen148
+\@cmidla=\count187
+\@cmidlb=\count188
+\@aboverulesep=\dimen149
+\@belowrulesep=\dimen150
+\@thisruleclass=\count189
+\@lastruleclass=\count190
+\@thisrulewidth=\dimen151
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2020/08/01 v1.3d Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+)
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 8.
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/txfonts/t1txtt.fd
+File: t1txtt.fd 2000/12/15 v3.1
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2020/02/24 v1.2b Standard LaTeX Color (DPC)
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+)) (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.sty (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+\lst@mode=\count191
+\lst@gtempboxa=\box47
+\lst@token=\toks18
+\lst@length=\count192
+\lst@currlwidth=\dimen152
+\lst@column=\count193
+\lst@pos=\count194
+\lst@lostspace=\dimen153
+\lst@width=\dimen154
+\lst@newlines=\count195
+\lst@lineno=\count196
+\lst@maxwidth=\dimen155
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count197
+\lst@skipnumbers=\count198
+\lst@framebox=\box48
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:41: Undefined control sequence.
+l.41 \usetikzlibrary
+                    {automata,positioning}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:41: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41 \usetikzlibrary{a
+                      utomata,positioning}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:56: Undefined control sequence.
+<argument> \undefinedpagestyle 
+                               
+l.56 \pagestyle{fancy}
+                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:57: Undefined control sequence.
+l.57 \lhead
+           {\hmwkAuthorName}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:57: Undefined control sequence.
+l.57 \lhead{\hmwkAuthorName
+                           }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:58: Undefined control sequence.
+l.58 \chead
+           {\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:58: Undefined control sequence.
+l.58 \chead{\hmwkClass
+                      \ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:58: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.58 \chead{\hmwkClass\ 
+                        (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:58: Undefined control sequence.
+l.58 \chead{\hmwkClass\ (\hmwkClassInstructor
+                                             \ \hmwkClassTime): \hmwkTitle}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:58: Undefined control sequence.
+l.58 ...ass\ (\hmwkClassInstructor\ \hmwkClassTime
+                                                  ): \hmwkTitle}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:58: Undefined control sequence.
+l.58 ...assInstructor\ \hmwkClassTime): \hmwkTitle
+                                                  }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:59: Undefined control sequence.
+l.59 \rhead
+           {\firstxmark}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:59: Undefined control sequence.
+l.59 \rhead{\firstxmark
+                       }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:60: Undefined control sequence.
+l.60 \lfoot
+           {\lastxmark}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:60: Undefined control sequence.
+l.60 \lfoot{\lastxmark
+                      }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:61: Undefined control sequence.
+l.61 \cfoot
+           {\thepage}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:63: LaTeX Error: Command \headrulewidth undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.63 \renewcommand\headrulewidth
+                                {0.4pt}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:64: LaTeX Error: Command \footrulewidth undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.64 \renewcommand\footrulewidth
+                                {0.4pt}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+\c@partCounter=\count199
+\c@homeworkProblemCounter=\count266
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:87: Undefined control sequence.
+l.87 \nobreak\extramarks
+                        {Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:87: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.87 \nobreak\extramarks{P
+                          roblem \arabic{homeworkProblemCounter}}{}\nobreak{}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count267
+\l__pdf_internal_box=\box49
+) (/Users/darth_sky/教学/Discrete&DS/discrete.aux)
+\openout1 = `discrete.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+ (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count268
+\scratchdimen=\dimen156
+\scratchbox=\box50
+\nofMPsegments=\count269
+\nofMParguments=\count270
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count271
+\MPscratchDim=\dimen157
+\MPnumerator=\count272
+\makeMPintoPDFobject=\count273
+\everyMPtoPDFconversion=\toks20
+)
+\c@lstlisting=\count274
+ [1
+
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 169.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 169.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 169.
+ [2]
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:173: Undefined control sequence.
+\enterProblemHeader #1-> \nobreak \extramarks 
+                                              {}{Problem \arabic {#1} contin...
+l.173     L
+           et $G = (V,E)$ be a simple graph where $V$ is the set of vertices...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:173: Undefined control sequence.
+\enterProblemHeader ...ak {} \nobreak \extramarks 
+                                                  {Problem \arabic {#1} (con...
+l.173     L
+           et $G = (V,E)$ be a simple graph where $V$ is the set of vertices...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 173.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 173.
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:180: Undefined control sequence.
+l.180     \textbf{(b)} $m \le \binom
+                                    {n}{2}$
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:192: Undefined control sequence.
+l.192 ... also even, thus $\#\{v\in V | d(v) \text
+                                                  { is odd}\}$ must be even.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:199: LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.199     \begin{align*}
+                        
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:200: Misplaced alignment tab character &.
+l.200         m = |E| &
+                       = \frac{\sum_{v\in V}d(v)}{2} \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:200: Missing $ inserted.
+<inserted text> 
+                $
+l.200 ...   m = |E| &= \frac{\sum_{v\in V}d(v)}{2}
+                                                   \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:200: Missing $ inserted.
+<inserted text> 
+                $
+l.200 ...   m = |E| &= \frac{\sum_{v\in V}d(v)}{2}
+                                                   \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:200: Missing $ inserted.
+<inserted text> 
+                $
+l.200 ...   m = |E| &= \frac{\sum_{v\in V}d(v)}{2}
+                                                   \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:200: Extra }, or forgotten $.
+\frac  #1#2->{\begingroup #1\endgroup \over #2}
+                                               
+l.200 ...   m = |E| &= \frac{\sum_{v\in V}d(v)}{2}
+                                                   \\
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:201: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.201                 &
+                       \le \frac{\sum_{v\in V} \left(|V| - 1\right)}{2} \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:202: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.202                 &
+                       = \frac{|V|(|V| - 1)}{2}\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:203: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.203                 &
+                       = \binom{|V|}{2}\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:203: Undefined control sequence.
+l.203                 &= \binom
+                               {|V|}{2}\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:204: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.204                 &
+                       = \binom{n}{2}
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:204: Undefined control sequence.
+l.204                 &= \binom
+                               {n}{2}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:205: LaTeX Error: \begin{homeworkProblem} on input line 172 ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.205     \end{align*}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:205: Missing $ inserted.
+<inserted text> 
+                $
+l.205     \end{align*}
+                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:205: Missing } inserted.
+<inserted text> 
+                }
+l.205     \end{align*}
+                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:231: Undefined control sequence.
+l.231     \qed
+              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:234: Undefined control sequence.
+\exitProblemHeader #1-> \nobreak \extramarks 
+                                             {Problem \arabic {#1} (continue...
+l.234 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:234: Undefined control sequence.
+\exitProblemHeader ...r {#1} \nobreak \extramarks 
+                                                  {Problem \arabic {#1}}{}\n...
+l.234 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:236: Undefined control sequence.
+\enterProblemHeader #1-> \nobreak \extramarks 
+                                              {}{Problem \arabic {#1} contin...
+l.236     L
+           et $G$ be a graph with $n - 1$ edges where $n$ is the number of v...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:236: Undefined control sequence.
+\enterProblemHeader ...ak {} \nobreak \extramarks 
+                                                  {Problem \arabic {#1} (con...
+l.236     L
+           et $G$ be a graph with $n - 1$ edges where $n$ is the number of v...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[3]
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:276: Undefined control sequence.
+l.276     \qed
+              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:278: Undefined control sequence.
+<argument> $(a) \implies 
+                         (b)$
+l.278     \subsection*{$(a) \implies (b)$}
+                                          
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:284: Undefined control sequence.
+l.284     Therefore $(a) \implies
+                                  (b)$.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:286: Undefined control sequence.
+l.286     \qed
+              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:288: Undefined control sequence.
+<argument> $(b) \implies 
+                         (c)$
+l.288     \subsection*{$(b) \implies (c)$}
+                                          
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:302: Undefined control sequence.
+l.302     \qed
+              .
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:304: Undefined control sequence.
+<argument> $(c) \implies 
+                         (a)$
+l.304     \subsection*{$(c) \implies (a)$}
+                                          
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:307: Undefined control sequence.
+l.307     \qed
+              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:308: Undefined control sequence.
+\exitProblemHeader #1-> \nobreak \extramarks 
+                                             {Problem \arabic {#1} (continue...
+l.308 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:308: Undefined control sequence.
+\exitProblemHeader ...r {#1} \nobreak \extramarks 
+                                                  {Problem \arabic {#1}}{}\n...
+l.308 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[4]
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:311: Undefined control sequence.
+\enterProblemHeader #1-> \nobreak \extramarks 
+                                              {}{Problem \arabic {#1} contin...
+l.311     A
+            walk in a graph $G$ is a sequence $W := v_0e_1v_1 ...v_{l-1}e_lv...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:311: Undefined control sequence.
+\enterProblemHeader ...ak {} \nobreak \extramarks 
+                                                  {Problem \arabic {#1} (con...
+l.311     A
+            walk in a graph $G$ is a sequence $W := v_0e_1v_1 ...v_{l-1}e_lv...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:325: Undefined control sequence.
+l.325 \qed
+          
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:334: Undefined control sequence.
+l.334 is impossible. \qed
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:339: Undefined control sequence.
+l.339 \qed
+          
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:341: Undefined control sequence.
+\exitProblemHeader #1-> \nobreak \extramarks 
+                                             {Problem \arabic {#1} (continue...
+l.341 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:341: Undefined control sequence.
+\exitProblemHeader ...r {#1} \nobreak \extramarks 
+                                                  {Problem \arabic {#1}}{}\n...
+l.341 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:344: Undefined control sequence.
+\enterProblemHeader #1-> \nobreak \extramarks 
+                                              {}{Problem \arabic {#1} contin...
+l.344     A
+            k-regular graph is a graph in which every vertex is of degree $k...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:344: Undefined control sequence.
+\enterProblemHeader ...ak {} \nobreak \extramarks 
+                                                  {Problem \arabic {#1} (con...
+l.344     A
+            k-regular graph is a graph in which every vertex is of degree $k...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:358: LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.358     \begin{align*}
+                        
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:359: Misplaced alignment tab character &.
+l.359         |V| &
+                   \ge \left|\{v_0\} \bigcup N_{v_0} \bigcup \left(N'_{v_1}\...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:359: Missing $ inserted.
+<inserted text> 
+                $
+l.359         |V| &\ge
+                       \left|\{v_0\} \bigcup N_{v_0} \bigcup \left(N'_{v_1}\...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:360: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.360             &
+                   = 1 + k + |\left(N'_{v_1}\cup\cdots\cup N'_{v_k}\right)|\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:361: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.361             &
+                   \ge 1 + k + |N'_{v_i}| \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:362: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.362             &
+                   = 1 + k + k - 1 \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:363: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.363             &
+                   = 2k
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:364: LaTeX Error: \begin{homeworkProblem} on input line 343 ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.364     \end{align*}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:364: Missing $ inserted.
+<inserted text> 
+                $
+l.364     \end{align*}
+                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+[5]
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:374: LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.374     \begin{align*}
+                        
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:375: Misplaced alignment tab character &.
+l.375         |V| &
+                   \ge \left|\{v_0, w_0\}\bigcup \left(N_{v_0} - \{w_0\}\rig...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:375: Missing $ inserted.
+<inserted text> 
+                $
+l.375         |V| &\ge
+                       \left|\{v_0, w_0\}\bigcup \left(N_{v_0} - \{w_0\}\rig...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:376: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.376             &
+                   = 2 + (k - 1) + (k - 1) + |N_{v} \cup N_{w}| \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:377: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.377             &
+                   \ge 2 + (k - 1) + (k - 1) + |N_{v}| \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:378: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.378             &
+                   =2 + 2(k - 1) + (k - 1)^2 \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:379: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.379             &
+                   = 1 + (k - 1 + 1)^2 \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:380: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.380             &
+                   = k^2 + 1
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:381: LaTeX Error: \begin{homeworkProblem} on input line 343 ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.381     \end{align*}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:381: Missing $ inserted.
+<inserted text> 
+                $
+l.381     \end{align*}
+                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:382: Undefined control sequence.
+l.382     \qed
+              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:384: Undefined control sequence.
+\exitProblemHeader #1-> \nobreak \extramarks 
+                                             {Problem \arabic {#1} (continue...
+l.384 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:384: Undefined control sequence.
+\exitProblemHeader ...r {#1} \nobreak \extramarks 
+                                                  {Problem \arabic {#1}}{}\n...
+l.384 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[6]
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:389: Undefined control sequence.
+\enterProblemHeader #1-> \nobreak \extramarks 
+                                              {}{Problem \arabic {#1} contin...
+l.389 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:389: Undefined control sequence.
+\enterProblemHeader ...ak {} \nobreak \extramarks 
+                                                  {Problem \arabic {#1} (con...
+l.389 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:393: Undefined control sequence.
+l.393     \includegraphics
+                          [scale=0.5]{./table.jpeg}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:402: Undefined control sequence.
+\exitProblemHeader #1-> \nobreak \extramarks 
+                                             {Problem \arabic {#1} (continue...
+l.402 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:402: Undefined control sequence.
+\exitProblemHeader ...r {#1} \nobreak \extramarks 
+                                                  {Problem \arabic {#1}}{}\n...
+l.402 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:405: Undefined control sequence.
+\enterProblemHeader #1-> \nobreak \extramarks 
+                                              {}{Problem \arabic {#1} contin...
+l.405     L
+           et $M$ be a matching for a graph $G$. (Recall that a matching in ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:405: Undefined control sequence.
+\enterProblemHeader ...ak {} \nobreak \extramarks 
+                                                  {Problem \arabic {#1} (con...
+l.405     L
+           et $M$ be a matching for a graph $G$. (Recall that a matching in ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:413: Undefined control sequence.
+l.413     \[P:=v_0 \xrightarrow
+                               {m_0} v_1 \xrightarrow{m_1} v_2\xrightarrow{m...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:413: Undefined control sequence.
+l.413 ...P:=v_0 \xrightarrow{m_0} v_1 \xrightarrow
+                                                  {m_1} v_2\xrightarrow{m_2}...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:413: Undefined control sequence.
+l.413 ..._0} v_1 \xrightarrow{m_1} v_2\xrightarrow
+                                                  {m_2}\cdots\xrightarrow{m_...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:413: Undefined control sequence.
+l.413 ...1} v_2\xrightarrow{m_2}\cdots\xrightarrow
+                                                  {m_k} v_{k+1}\]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:419: Undefined control sequence.
+l.419     \qed
+              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:428: Undefined control sequence.
+l.428     \qed
+              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:430: Undefined control sequence.
+\exitProblemHeader #1-> \nobreak \extramarks 
+                                             {Problem \arabic {#1} (continue...
+l.430 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/darth_sky/教学/Discrete&DS/discrete.tex:430: Undefined control sequence.
+\exitProblemHeader ...r {#1} \nobreak \extramarks 
+                                                  {Problem \arabic {#1}}{}\n...
+l.430 \end{homeworkProblem}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[7] (/Users/darth_sky/教学/Discrete&DS/discrete.aux) ) 
+Here is how much of TeX's memory you used:
+ 2486 strings out of 478994
+ 36745 string characters out of 5858183
+ 334540 words of memory out of 5000000
+ 19995 multiletter control sequences out of 15000+600000
+ 409295 words of font info for 46 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 52i,6n,60p,309b,263s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on /Users/darth_sky/教学/Discrete&DS/discrete.pdf (7 pages, 232583 bytes).
+PDF statistics:
+ 112 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

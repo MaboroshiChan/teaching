@@ -1,0 +1,106 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+
+\question{1}{The First Problem} 
+(a)
+
+\[(s \land e)\lor(m \land e)\lor(\lnot s\land \lnot m\land e)\]
+(b)
+
+(c)
+
+\begin{align*}
+    p\leftrightarrow q &\equiv (p\to q)\land (q\to p) \\
+                       &\equiv (\lnot p \lor q)\land (\lnot q \lor p) \\
+                       &\equiv ((\lnot p \lor q)\land \lnot q)\lor((\lnot p \lor q)\land p)\\
+                       &\equiv ((\lnot p\land \lnot q)\lor(q\land \lnot q)) \lor ((\lnot p \land p)\lor (q\land p))\\
+                       &\equiv (\lnot p\land \lnot q) \lor (q\land p) \\ 
+                       &\equiv (p \land q) \lor (\lnot p\land \lnot q)
+\end{align*}
+
+
+\question{2}{The second problem}
+To prove \[(p\to q)\land (p\to r)\to (p \to (q\land r))\]
+
+\question{3}{The third problem}
+\begin{align*}
+    (P\to Q) \lor (Q \to R) &\equiv (\lnot P \lor Q) \lor (\lnot Q \lor R) \\ 
+                            &\equiv \lnot P\lor ((Q\lor \lnot Q)\lor R) \\
+                            &\equiv \lnot P\lor (R\lor (Q\lor \lnot Q)) \\
+                            &\equiv (\lnot P\lor R)\lor (Q \lor\lnot Q) \\
+                            &\equiv (\lnot P\lor R) \lor \mathrm{True}\\
+                            &\equiv \mathrm{True}
+\end{align*}
+
+\question{7}{}
+\[s_0 = a_0 + b_0\]
+\[s_1 = (a_1 + b_{1}) + a_0b_0\]
+\begin{align*}
+    s_2 &= (a = (11)_2 \land b \neq (00)_2)\lor (b = (11)_2 \land a \neq (00)_2) \\
+        &= a_1a_0\overline{b_0}\overline{b_1} + b_1b_0\overline{a_0}\overline{a_1} + \overline{a_1a_0\overline{b_0}\overline{b_1} + b_1b_0\overline{a_0}\overline{a_1}}
+\end{align*}
+
+
+\question{8}{}
+$x\bar{y}$
+
+$x\overline{y}\overline{z}$
+
+\begin{align*}
+    (x \land y\land z) \lor (\lnot x \land \lnot y \land \lnot z) &= xyz \lor ((1-x)(1-y)(1-z))\\
+    &= xyz + (1-x)(1-y)(1-z) - xyz(1-x)(1-y)(1-z) \\
+    &= xy+yz+zx -x -y -z + 1\\
+    &= xy + (yz-1) + (zx-1) + (1-x) + (1-y) + (1 - z) \\ 
+    &= xy + \overline{yz} + \overline{zx} + \bar{x} + \bar{y} + \bar{z}
+\end{align*}
+
+\[a + b + c + d\]
+
+\begin{align*}
+(a + b + c + d) \lor (\bar{a} + \bar{b} +\bar{c} +\bar{d}) &= (a + b + c + d) + (\bar{a} + \bar{b} +\bar{c} +\bar{d}) - (a + b + c + d)(\bar{a} + \bar{b} +\bar{c} +\bar{d})\\
+\end{align*}
+
+\end{document}

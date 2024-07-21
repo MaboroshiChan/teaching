@@ -1,0 +1,6 @@
+PWD /Users/darth_sky/教学/离散数学
+INPUT /usr/local/texlive/2021/texmf.cnf
+INPUT /usr/local/texlive/2021/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT /Users/darth_sky/教学/离散数学/homework2.tex
+OUTPUT /Users/darth_sky/教学/离散数学/homework2.log

@@ -1,0 +1,305 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{cancel}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Shi You}  % your name
+\newcommand\ANDREWID{0xfffff}     % your andrew id
+\newcommand\HWNUM{2}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+\newcommand{\sumn}{\sum_{n=0}^{\infty}}
+\newcommand{\ea}{e^{\alpha}}
+\newcommand{\nea}{e^{-\alpha}}
+\newcommand{\expo}{\left(-\beta n\epsilon\right)}
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\solution}{\textbf{Solution:}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\U}{\mathbf{U}}
+\newcommand{\p}{\partial}
+
+\question{Problem 1}{}
+or the single two-state spin $s = \pm 1$, with energy described by Eq. 8.1, find the entropy as a function of the temperature $T$ and applied field $H$.
+
+\solution
+For a single two-state spin, the partition function is
+\begin{equation}
+    Z = \sum_{s = \pm 1} e^{-\beta E_s} = e^{\beta H} + e^{-\beta H}
+\end{equation}
+
+The entropy is given by
+\begin{align*}
+    S &= -k_B \sum_{s = \pm 1} p_s \ln p_s \\
+      &= -k_B \sum_{s = \pm 1} \frac{e^{-\beta E_s}}{Z} \ln \frac{e^{-\beta E_s}}{Z} \\
+      &= -k_B \sum_{s = \pm 1} \frac{e^{-\beta E_s}}{Z} \left(-\beta E_s - \ln Z\right) \\
+      &= k_B \left(\beta H e^{\beta H} + \beta H e^{-\beta H} - \ln \left(e^{\beta H} + e^{-\beta H}\right)\right)
+\end{align*}
+
+where $\beta = \frac{1}{k_B T}$.
+
+\question{Problem 2}{}
+Calculate expressions for the free energy and mean magnetization of a system of three coupled two-state spins $s_1, s_2$ and $s_3 = \pm 1$, with Hamiltonian (total energy) $E = -J(s_1s_2 + s_2s_3) -H (s_1 + s_2 + s_3)$. Show that the mean magnetization of this system vanishes in the absence of an applied field $H$.
+
+\solution
+
+Using the transfer matrix, the partition function is
+\begin{align*}
+    Z &= \sum_{s_1 = \pm 1} \sum_{s_2 = \pm 1} \sum_{s_3 = \pm 1} e^{-\beta E} \\
+      &= \mathbf{Tr}(\mathbf{T}^3)
+\end{align*}
+
+where 
+\begin{equation}
+    \mathbf{T} = \begin{pmatrix}
+        e^{\beta(J + H)} & e^{-\beta J} \\
+        e^{-\beta J} & e^{\beta(J - H)}
+    \end{pmatrix}
+\end{equation}
+
+Evaluating the trace of $\mathbf{T}^3$, we have 
+\begin{align*}
+    \mathbf{T}^3 &= \begin{pmatrix}
+        e^{\beta(J + H)} & e^{-\beta J} \\
+        e^{-\beta J} & e^{\beta(J - H)} \\
+    \end{pmatrix}^3 \\
+    &= \begin{pmatrix}
+        e^{3\beta(J + H)} + e^{3\beta(J - H)} + 2e^{\beta J}e^{-\beta H} & e^{3\beta(J - H)} + e^{3\beta(J + H)} - 2e^{\beta J}e^{-\beta H} \\
+        e^{3\beta(J - H)} + e^{3\beta(J + H)} - 2e^{\beta J}e^{-\beta H} & e^{3\beta(J + H)} + e^{3\beta(J - H)} + 2e^{\beta J}e^{-\beta H}\\
+    \end{pmatrix}
+\end{align*}
+
+The partition function is then
+\begin{align*}
+    Z &= \mathbf{Tr}(\mathbf{T}^3) \\
+      &= e^{3\beta(J + H)} + e^{3\beta(J - H)} + 2e^{\beta J}e^{-\beta H} + e^{3\beta(J - H)} + e^{3\beta(J + H)} - 2e^{\beta J}e^{-\beta H} \\
+      &= 2e^{3\beta(J + H)} + 2e^{3\beta(J - H)}
+\end{align*}
+
+The free energy is given by
+\begin{align*}
+    F &= -k_B T \ln Z \\
+      &= -k_B T \ln \left(2e^{3\beta(J + H)} + 2e^{3\beta(J - H)}\right)
+\end{align*}
+
+When $H = 0$, the mean magnetization is given by
+\begin{align*}
+    \langle s_1 + s_2 + s_3 \rangle 
+    &= \frac{\partial (-\beta F)}{\partial (\beta H)}\\
+    &= \frac{6e^{3\beta(J + H)} - 6e^{3\beta(J - H)}}{2e^{3\beta(J + H)} + 2e^{3\beta(J - H)}}\biggr|_{\substack{H=0}} \\
+    &= 0
+\end{align*}
+
+\question{Problem 3}{}
+
+Let 
+\begin{equation}
+    \mathbf{T} = \begin{pmatrix}
+        e^{\beta(J' + H')} & e^{-\beta J'} \\
+        e^{-\beta J'} & e^{\beta(J' - H')}
+    \end{pmatrix}
+\end{equation}
+
+\part{b} 
+If $H' = 0$, show that $\U^{-1}\T\U$ is diagonal for the unitary rotation matrix
+\begin{equation}
+    \U = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+    \end{pmatrix}
+\end{equation}
+
+\solution:
+
+Since $H'=0$, 
+
+\begin{equation}
+    \mathbf{T} = \begin{pmatrix}
+        e^{\beta J'} & e^{-\beta J'} \\
+        e^{-\beta J'} & e^{\beta J'}
+    \end{pmatrix}
+\end{equation}
+
+The eigenvalues of $\mathbf{T}$ are
+\begin{equation}
+    \lambda_1 = e^{\beta J'} + e^{-\beta J'}, \quad \lambda_2 = e^{\beta J'} - e^{-\beta J'}
+\end{equation}
+
+The corresponding eigenvectors are
+\begin{equation}
+    \mathbf{v}_1 = \begin{pmatrix}
+        1 \\
+        1
+    \end{pmatrix}, \quad \mathbf{v}_2 = \begin{pmatrix}
+        1 \\
+        -1
+    \end{pmatrix}
+\end{equation}
+
+Thus the diagonal matrix is
+\begin{equation}
+    \mathbf{D} = \begin{pmatrix}
+        e^{\beta J'} + e^{-\beta J'} & 0 \\
+        0 & e^{\beta J'} - e^{-\beta J'}
+    \end{pmatrix}
+\end{equation}
+
+Therefore $\U^{-1}\T\U$ is diagonal. And
+\begin{equation}
+    \U^{-1}\T\U = \begin{pmatrix}
+        e^{\beta J'} + e^{-\beta J'} & 0 \\
+        0 & e^{\beta J'} - e^{-\beta J'}
+    \end{pmatrix}
+\end{equation}
+
+\part{c} \textbf{Page 74-75}
+
+\solution 
+
+\begin{align*}
+    \frac{\lambda_1^{N-r}\lambda_2^{r} + \lambda_2^{N-r}\lambda_1^{r}}{\lambda_1^N+\lambda_2^N} &= \frac{\lambda_1^{N}\frac{\lambda_2}{\lambda_1}+\lambda_2^N\frac{\lambda_1}{\lambda^2}}{\lambda_1^N+\lambda_2^N} \\
+    &= \frac{\left(\frac{\lambda_1}{\lambda_2}\right)^N}{\left(\frac{\lambda_1}{\lambda_2}\right)^N+1}
+\end{align*}
+
+\question{Problem 5}{}
+In the chiral clock model, a one-dimensional chain of sites each carries an integer variable ni that can take values $0, 1$ or $2$, representing three equally-spaced directions around a clock-face. 
+Nearest neighbours interact so that their lowest-energy states occur when each site is one position further round the clock-face than its neighbour to the left, so that the energy is given by
+
+\begin{equation}
+    E = -J\sum_{i=1}^{N} \cos\left(\frac{2\pi(n_i-n_{i-1} + 1)}{3}\right)
+\end{equation}
+with a coupling constant $J$ and periodic boundary conditions $n_{N+1} = n_1$.
+Show that the transfer matrix for this model has only one eigenvalue, equal to
+$2\exp(-\beta J/2)+\exp(\beta J)$, and hence write down the free energy per site.
+
+\solution 
+
+The partition function is 
+\begin{align*}
+    Z &= 
+\end{align*}
+
+\question{Problem 6}{}
+
+\question{Problem 7}{(\textbf{Page 90-91})}
+A mean field theory of a particular thermodynamic system yields an expression for the
+free energy density $f$ as a function of volume fraction $\phi$ of conserved particles as
+
+\begin{equation}
+    f = \frac{1}{\phi^2(1-\phi)^2} + 250\phi(1-\phi)
+\end{equation}
+Use the common-tangent construction to discover the binodal values, for which this system exhibits coexistence.
+[Hint: You may find it helpful to re-write this function in a more symmetrical way by making a substitution for $\phi$.]
+
+\solution
+Here we make a substitution for $\phi$:
+\begin{equation}
+    \phi = \varphi + \frac{1}{2}
+\end{equation}
+
+where $\alpha$ is a new variable. Then
+\begin{align*}
+    f &= \frac{1}{\phi^2(1-\phi)^2} + 250\phi(1-\phi) \\
+      &= \frac{1}{\left(\alpha + \frac{1}{2}\right)^2\left(1 - \alpha - \frac{1}{2}\right)^2} + 250\left(\alpha + \frac{1}{2}\right)\left(1 - \alpha - \frac{1}{2}\right) \\
+      &= \frac{1}{(\alpha^2-1/4)^2} + 250\left(\alpha^2 - \frac{1}{4}\right)
+\end{align*}
+
+We set up two equations:
+\begin{equation}
+    \frac{\p f}{\p \alpha}\biggr|_{\substack{\alpha=\alpha_1}} = \frac{\p f}{\p \alpha}\biggr|_{\substack{\alpha=\alpha_2}}
+\end{equation}
+
+which is equivalent to
+
+\begin{equation}
+    -\frac{4\alpha_1}{(\alpha_1^2-1/4)^3} + 500\alpha_1 = -\frac{4\alpha_2}{(\alpha_2^2-1/4)^3} + 500\alpha_2
+\end{equation}
+
+and 
+
+\begin{equation}
+    \alpha_1\frac{\p f}{\p \alpha}\biggr|_{\substack{\alpha=\alpha_1}}-f(\alpha_1) = \alpha_2\frac{\p f}{\p \alpha}\biggr|_{\substack{\alpha=\alpha_2}} - f(\alpha_2)
+\end{equation}
+which is equivalent to
+
+\begin{equation}
+    -\frac{4\alpha_1^2}{(\alpha_1^2-1/4)^3} + 500\alpha_1^2 - \frac{1}{(\alpha_1^2-1/4)^2} - 250\alpha_1^2 + 125 = -\frac{4\alpha_2^2}{(\alpha_2^2-1/4)^3} + 500\alpha_2^2 - \frac{1}{(\alpha_2^2-1/4)^2} - 250\alpha_2^2 + 125
+\end{equation}
+
+Solving the equations, we have
+
+Assume that $f(x)$ is integrable over any interval $(a, b)$, and $g(x)$ is the probability density function of $X$ within the interval $(a, b)$, with $\int_{a}^{b}g(x)=1$. We need to prove that after repeating the sampling process $n$ times (where $n$ is sufficiently large), the mean of $\frac{f(x_i)}{g(x_i)}$ converges to $\int_{a}^{b}f(x)dx$, i.e.,
+
+\begin{equation}
+    \lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}\frac{f(x_i)}{g(x_i)} = \int_{a}^{b}f(x)dx
+\end{equation}
+
+According to the Law of Large Numbers, if $X_1, X_2, \ldots, X_n$ are independent and identically distributed random variables with finite mean $\mu$ and variance $\sigma^2$, then for any given positive number $\epsilon$, when $n$ is sufficiently large, we have
+
+\begin{equation}
+\Pr\left(\left|\frac{1}{n}\sum_{i=1}^{n}X_i - \mu\right| < \epsilon\right) \approx 1.
+\end{equation}
+
+Now let's prove that the mean of $\frac{f(x_i)}{g(x_i)}$ converges to $\int_{a}^{b}f(x)dx$ after repeating the sampling process $n$ times.
+
+Assume that we perform $n$ independent samples, resulting in random variables $X_1, X_2, \ldots, X_n$, where each $X_i$ has the probability density function $g(x)$.
+
+Define the random variable $Y_i = \frac{f(X_i)}{g(X_i)}$, and the expectation of $Y_i$ is
+
+\begin{equation}
+E[Y_i] = \int_{-\infty}^{\infty}\frac{f(x)}{g(x)}g(x)dx = \int_{-\infty}^{\infty}f(x)dx.
+\end{equation}
+
+According to the Law of Large Numbers, for any given positive number $\epsilon$, when $n$ is sufficiently large, we have
+
+\begin{equation}
+\Pr\left(\left|\frac{1}{n}\sum_{i=1}^{n}Y_i - \int_{-\infty}^{\infty}f(x)dx\right| < \epsilon\right) \approx 1.
+\end{equation}
+
+Since $f(x)$ is integrable over any interval $(a, b)$, we can transform the integral $\int_{-\infty}^{\infty}f(x)dx$ into $\int_{a}^{b}f(x)dx$, as the values of $f(x)$ outside $(a, b)$ do not affect the integral result.
+
+Therefore, when $n$ is sufficiently large, we have
+
+\begin{equation}
+\Pr\left(\left|\frac{1}{n}\sum_{i=1}^{n}Y_i - \int_{a}^{b}f(x)dx\right| < \epsilon\right) \approx 1.
+\end{equation}
+
+In other words, when $n$ is sufficiently large, $\frac{1}{n}\sum_{i=1}^{n}Y_i$ is highly likely to fall within an $\epsilon$
+
+\end{document}

@@ -1,0 +1,86 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\newcommand{\sumn}{\sum_{k=1}^{n}}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+\newcommand\suminf{\sum_{n=0}^{\infty}}
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+
+\question{1}{Definition of Injection}
+
+Let $f: X\to Y, x_1, x_2\in X$, then $f(x_1) = f(x_2)$ implies $x_1 = x_2$
+
+\question{2}{Definition of Surjection(on-to)}
+
+Let $f: X\to Y$, $\forall y\in Y\exists x\in X f(x) = y$.
+
+\question{3}{Homework Problem}
+
+Prove that if $f$ is bijection then $f_{\mathrm{cube}}$ is bijection as well.
+
+\textit{Proof of injectivity} Let $x_1, x_2\in \mathbb{R}$. We need to show $f_{\mathrm{cube}}(x_1) = f_{\mathrm{cube}}(x_2)\implies x_1 = x_2$.
+By definition of $f_{\mathrm{cube}}$, we have \[f_{\mathrm{cube}}(x_1) = f_{\mathrm{cube}}(x_2)\implies (f(x_1))^3 = (f(x_2))^3\].
+Applying the fact in the textbook, we have 
+\[(f(x_1))^3 = (f(x_2))^3 \implies ((f(x_1))^3)^\frac{1}{3} = ((f(x_2))^3)^{\frac{1}{3}}\implies f(x_1) = f(x_2)\]
+(Need to show $f(x_1) = f(x_2) \implies x_1 = x_2$)
+
+Applying the fact that $f$ is bijection (hence injective), we have that
+\[f(x_1)=f(x_2) \implies x_1 = x_2\]
+
+\textit{Proof of surjectivity}
+
+We need to show $\forall y\exists x f_{\text{cube}}(x)=y$. 
+
+Let $y\in \mathbb{R}$. (Need to show $\exists f_{\text{cube}}(x)=y \iff f(x)^3 = y\iff f(x) = y^{\frac{1}{3}}$).
+ 
+Since $y\in \mathbb{R}$, $y^{\frac{1}{3}}$ is also $\in \mathbb{R}$.
+
+Since $f$ is bijection (hence on-to), we have $\exists x\in \mathbb{R}$ such that \[f(x) = y^{\frac{1}{3}}\],
+then 
+\[f_{\text{cube}}(x) = \left(y^{\frac{1}{3}}\right)^{3}=y\]
+
+This proves the surjectivity of $f_{\text{cube}}$.
+\end{document}
+

@@ -1,0 +1,422 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+
+\usepackage[utf8]{inputenc}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+morekeywords={self},              % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Final Exam}
+\newcommand{\hmwkDueDate}{\today}
+\newcommand{\hmwkClass}{Number theory}
+\newcommand{\hmwkClassTime}{Section A}
+\newcommand{\hmwkClassInstructor}{Professor J}
+\newcommand{\hmwkAuthorName}{\textbf{V} \and \textbf{U}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 3:10pm}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+\newcommand{\suminfty}{\sum_{n=1}^{\infty}}
+\newcommand{\Psixn}{\Psi\left(\frac{x}{n}\right)}
+\newcommand{\Psii}{\sum_{n=1}^{\infty} \Psi\left(\frac{x}{n}\right) - 2\sum_{n=1}^{\infty} \Psi\left(\frac{x}{2n}\right)}
+\newcommand{\Psif}[1]{\Psi\left(\frac{x}{#1}\right)}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+
+Prove that $2$ is primative root of $\mod 11$.
+
+\solution
+
+Note that the set of $\{2^x\}$ for $x \in \{1,2,\cdots, 11\}$ is
+
+\begin{tabular}{|*{11}{c|}}
+    $2^1$ & $2^2$ & $2^3$ & $2^4$ & $2^5$ & $2^6$ & $2^7$ & $2^8$ & $2^9$ & $2^{10}$  & $2^{11}$\\
+    \hline
+    2 & 4 & 8 & 5 & 10 & 9 & 7 & 3 & 6 & 1 & 2 \\
+    \hline
+\end{tabular}
+
+which is exactly $\{1,2,\cdots, 10\}$
+Thus by definition of primative root, the $2$ is primative root of mod 11.
+
+\qed 
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+Suppose $p$ and $q$ are primes, $p = 4q+1$. Prove that $q$ is not a primitive root (mod $p$).
+
+\solution:
+
+By Law of Quadratic Reciprocity
+
+\begin{equation}
+    \left(\frac{p}{q}\right)\left(\frac{q}{p}\right) = (-1)^{\frac{(p-1)(q-1)}{4}} = (-1)^{q(q-1)}=1
+\end{equation}
+
+And the fact that 
+
+\begin{equation}
+    p = 4q + 1 \equiv 1^2 \mod q \implies \left(\frac{p}{q}\right) = 1
+\end{equation}
+
+We have that
+
+\begin{equation}
+    \left(\frac{q}{p}\right) = 1,
+\end{equation}
+
+which means there exists $x$ such that $q = x^2 \mod p$
+
+Thus by fermat little theorem,
+\begin{equation}
+    q^{\frac{p-1}{2}} = x^{p-1} \equiv 1 \mod p
+\end{equation}
+
+Hence $q$'s order is not $p-1$, and therefore q is \textit{not} primitive root of $p$
+ 
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+
+Suppose $p$ and $q$ are primes, $p = 2q + 1, p \equiv 2\mod 5$. Prove that $5$ is a primitive root (mod $p$).
+
+\solution
+
+By Law of Quadratic Reciprocity
+\begin{equation}
+    \left( \frac{p}{5} \right)  \left( \frac{5}{p} \right)  =\left( -1\right)^{p-1}  =1
+\end{equation}
+
+Since $p \equiv 2 \neq x^2 \mod 5$ we have 
+
+\begin{equation}
+    \left(\frac{p}{5}\right) = -1
+\end{equation}
+
+Thus, 
+
+\begin{equation}
+    \left(\frac{5}{p}\right) = -1
+\end{equation}
+
+Meaning that $5\not\equiv x^2 \mod p$. Therefore, we can't have
+\begin{equation}
+    5^{(p-1)/2} = 5^q = 1 \mod p
+\end{equation}
+
+Also we can't have
+\begin{equation}
+    5^2 = 1 \mod p
+\end{equation}
+
+or
+\begin{equation}
+    5 = 1 \mod p
+\end{equation}
+
+Otherwise, we will have $p = 2, 3$ in which cases, $p=2q+1$ are not satisfied.
+Together, by the Fermat Little Theorem, 
+\[\mathrm{Ord}_p(5) = 2q=p-1\]
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+Suppose
+\[m1 > 2, m2 >2, (m_1,m_2)=1\]
+Prove that there is no primitive root (mod $m_1m_2$).
+
+\solution
+
+Let $a$ be coprime to $m_1m_2$. By Euler's theorem, 
+\[a^{\phi(m_1)} = 1 \mod m_1, a^{\phi(m_2)} = 1 \mod m_2\]
+
+Let \[L := \mathrm{lcm}(\phi(m_1), \phi(m_2))\], then $a^L = 1 \mod m_1$ and $a^L = 1 \mod m_2$.
+Hence
+
+\[a^L = 1 \mod m_1m_2\]
+
+By definition of $\phi$, if $m = p_1^{e_1}\cdots p_k^{e_k}> 2$, 
+
+\[\phi(m) = \prod_{k}p_k^{e_k-1}(p_k-1)\]
+
+is apparently even. 
+
+Thus, 
+
+\[L \le \phi(m_1)\phi(m_2)/2 = \phi(m_1m_2)/2 < \phi(m_1m_2)\]
+
+Apparently, $a$ is not a primitive root. Since $a$ is randomly chosen, we come to conclude that $\mod m_1m_2$ has no primitive root.
+
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Let $\Lambda(n)$ be given by
+    \[\Lambda(n) = \begin{cases}
+        \log p & \text{if } n = p^k \text{ for some prime } p \text{ and integer } k \ge 1\\
+        0 & \text{otherwise}
+    \end{cases}\]
+    where $p$ denotes a prime. It is known that
+    \begin{equation}
+        \sum_{n\le x} \Lambda(n)\left[\frac{x}{n}\right] = \sum_{n\le x} \log(n)
+    \end{equation}
+    Let
+    \begin{equation}
+        \Psi(x) = \sum_{n\le x} \Lambda(n)
+    \end{equation}
+    (i) Prove that
+    \[\sum_{n\le x} \log(n) = x\log(x) - x + O(\log(x))\]
+    (ii) Prove that 
+    \[\sum_{n\le x} \Psi\left(\frac{x}{n}\right) = \sum_{n\le x} \Lambda(x)\left[\frac{x}{n}\right]\]
+
+    \solution
+
+    By Stirling's approximation, we have
+    \begin{align*}
+        \sum_{n\le x} \log(n) &= \int_{0}^{x} \log(x)dx + O(\log(x)) \\
+                              &= x\log(x) - x + O(\log(x))
+    \end{align*}
+
+    For (ii), we have 
+    \begin{align*}
+        \sum_{n\le x} \Psi\left(\frac{x}{n}\right) &= \sum_{n\le x} \sum_{m\le x/n} \Lambda(m) \\
+                                                   &= \sum_{m\le x} \Lambda(m) \sum_{n\le x/m} 1 \\
+                                                   &= \sum_{m\le x} \Lambda(m) \left[\frac{x}{m}\right]\\
+                                                   &= \sum_{n\le x} \Lambda(x)\left[\frac{x}{n}\right]
+    \end{align*}
+
+    \qed
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Prove that
+    \begin{equation}
+        \sum_{n=1}^{\infty} \Psi\left(\frac{x}{n}\right) - 2\sum_{n=1}^{\infty} \Psi\left(\frac{x}{2n}\right) = x\log(2) + O(\log(x)) \text{  if  } x \ge 4
+    \end{equation}
+    Note that $\Psi(y) = 0$ if $0 < y \le 1$. The left side of $(5)$ is equal to
+    \[\sum_{n\le x} \Psi\left(\frac{x}{n}\right) - 2\sum_{n\le x/2} \Psi\left(\frac{x}{2n}\right)\]
+    Thus applying $(4)$, we have
+    \begin{align*}
+        \sum_{n\le x} \Psi\left(\frac{x}{n}\right) - 2\sum_{n\le x/2} \Psi\left(\frac{x}{2n}\right)
+        &= x\log(x) - x + O(\log(x)) - 2\left(\frac{x}{2}\log\left(\frac{x}{2}\right) - \frac{x}{2} + O(\log(x))\right) \\
+        &= x\log(2) + O(\log(x))\\
+    \end{align*}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+    Prove that
+    \begin{equation}
+        \Psii \le \Psi(x)
+    \end{equation}
+    and
+    \begin{equation}
+        \Psii \ge \Psi(x) - \Psi\left(\frac{x}{2}\right)
+    \end{equation}
+    \solution
+
+    For (6), we have
+    
+    \begin{align*}
+        \Psii &= \Psi(x) + \Psif{2} + \Psif{3} + \cdots -2\left\{\Psif{2} + \Psif{3}\cdots\right\}\\
+              &= \left\{\Psi(x) - \Psif{2}\right\} + \left\{\Psif{3} - \Psif{4}\right\} + \cdots\\
+    \end{align*}
+    Note that $\Psi(y)$ is increasing for $y > 1$, we have
+    \[\Psif{k} - \Psif{k+1} \ge 0\]
+    Thus, 
+    \[\Psii \ge \Psi(x) - \Psif{2}\]
+    For (7), we have
+    \begin{align*}
+        \Psii &= \Psi(x) + \Psif{2} + \Psif{3} + \cdots -2\left\{\Psif{2} + \Psif{4}\cdots\right\}\\
+              &= \Psi(x) - \left\{\Psif{2} - \Psif{3}\right\} - \left\{\Psif{4} - \Psif{5}\right\} - \cdots\\
+              &\le \Psi(x)
+    \end{align*}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+    Conclude that 
+    \begin{equation}
+        \Psi(x) \ge x\log(2) + O(\log(x))
+    \end{equation}
+    and
+    \begin{equation}
+        \Psi(x) - \Psif{2} \le x\log(2) + O(\log(x))
+    \end{equation}
+    \solution
+    By (6) and (5)
+    \begin{align*}
+        \Psi(x) &\ge \Psii \\ 
+                &= x\log(2) + O(\log(x))
+    \end{align*}
+    By (7) and (5)
+    \begin{align*}
+        \Psi(x) - \Psif{2} &\le \Psii \\
+                           &= x\log(2) + O(\log(x))
+    \end{align*}
+\end{homeworkProblem}
+
+\end{document}

@@ -1,0 +1,156 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{cancel}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+\newcommand{\sumn}{\sum_{n=0}^{\infty}}
+\newcommand{\ea}{e^{\alpha}}
+\newcommand{\nea}{e^{-\alpha}}
+
+\question{Problem 1}{}
+Differentiate the following functions with respect to $x$:
+\[y=\frac{8x}{9-\cot x}\]
+
+\textbf{Solution}.
+We use the quotient rule:
+\begin{align*}
+\frac{d}{dx}\left(\frac{f}{g}\right)&=\frac{f'g-fg'}{g^2}\\
+\end{align*}
+
+where $f=8x$ and $g=9-\cot x$.  We compute the derivatives of $f$ and $g$:
+
+\begin{align*}
+y'&=\frac{(8x)'(9-\cot x)-(8x)(9-\cot x)'}{(9-\cot x)^2}\\
+  &= \frac{8(9-\cot x)-8x\cot x'}{(9-\cot x)^2}\\
+  &= \frac{8(9-\cot x)+8x\csc^2 x}{(9-\cot x)^2}\\
+  &= \frac{72-8\cot x+8x\csc^2 x}{(9-\cot x)^2}\\
+\end{align*}
+
+\question{Problem 2}{}
+Calculate the area of one petal of the three-petal rose $r=\cos 3\theta$.
+
+\textbf{Solution}.
+
+We use the formula for the area of a polar curve:
+\[A=\frac{1}{2}\int_{\alpha}^{\beta}r^2d\theta\]
+
+where $\alpha$ and $\beta$ are the angles at which the curve intersects itself.  In this case, we have $\alpha=\pi/2$ and $\beta=5\pi/6$.
+The reason for which $\beta = \frac{5\pi}{6}$ is that the curve intersects itself at $\theta = \frac{\pi}{6}$ and $\theta = \frac{5\pi}{6}$, and the area of one petal is the area between these two points.
+
+Thus, we have:
+\begin{align*}
+    A &= \frac{1}{2}\int_{\pi/2}^{5\pi/6} \cos^2 3\theta d\theta\\
+      &= \frac{1}{2}\int_{\pi/2}^{5\pi/6} \frac{1+\cos 6\theta}{2} d\theta\\
+      &= \frac{1}{4}\int_{\pi/2}^{5\pi/6} (1+\cos 6\theta) d\theta\\
+      &= \frac{1}{4}\left(\int_{\pi/2}^{5\pi/6} 1 d\theta + \int_{\pi/2}^{5\pi/6} \cos 6\theta d\theta\right)\\
+      &= \frac{1}{4}\left(\theta + \frac{\sin 6\theta}{6}\right)_{\pi/2}^{5\pi/6}\\
+      &= \frac{1}{4}\left(\frac{5\pi}{6} + \frac{\sin 5\pi}{6} - \frac{\pi}{2} - \frac{\sin \pi}{6}\right)\\
+      &= \frac{\pi}{12}\\
+\end{align*}
+
+\question{4}{}
+Comparison test and ratio test
+
+\question{5}{}
+By the power rule for integrals, we have:
+\[\int_{0}^{\infty}\frac{1}{x^{3/4}}=\lim_{b\rightarrow\infty}\int_{0}^{b}\frac{1}{x^{3/4}} = \lim_{b\rightarrow\infty}\frac{4}{1/4}b^{1/4} = \infty\]
+Thus (a) diverges.
+\[\int_{0}^{\infty}\frac{1}{e^{-2x}}= \lim_{b\rightarrow\infty}\int_{0}^{b}\frac{1}{e^{-2x}} = \lim_{b\rightarrow\infty}\frac{1}{-1/2}e^{-2x} = -2\]
+Thus (b) converges.
+
+\question{7}{}
+Determine whether the following series converge or diverge:
+\[\sum_{n=0}^{\infty}\frac{5e^{-2n^2}}{n^2-1}\]
+\textbf{Solution}.
+We use the limit comparison test.  We compare the series to $\sum_{n=0}^{\infty}\frac{1}{n^2}$, which converges.  We have:
+\[\lim_{n\rightarrow\infty}\frac{5e^{-2n^2}/(n^2-1)}{1/n^2} = \lim_{n\rightarrow\infty}\frac{5e^{-2n^2}n^2}{n^2-1} = \lim_{n\rightarrow\infty}\frac{5e^{-2n^2}}{1-1/n^2} = 5\]
+
+\question{3}{}
+
+Find the volume of region created by rotating the region bounded by $y=-x^2+4x+1$ and $y=1$ about the $y=1$-axis.
+
+\textbf{Solution}.
+We use the formula for volume of a solid of revolution:
+\[V=\int_{a}^{b}\pi(f(x)-g(x))^2dx\]
+
+where $R$ is the outer radius and $r$ is the inner radius.  In this case, we have $R=1$ and $r=1-x^2+4x+1=2-x^2+4x$, and $f(x)=-x^2+4x+1$, $g(x) = 1$ We determine $a$, and $b$:
+\begin{align*}
+    -x^2+4x+1 &= 1\\
+    -x^2+4x &= 0\\
+    x^2-4x &= 0\\
+    x(x-4) &= 0\\
+    x &= 0, 4\\
+\end{align*}
+
+Thus we have:
+\begin{align*}
+  V &= \int_{0}^{4} \pi(f(x)-g(x))^2dx \\
+    &= \int_{0}^{4} \pi(x^2+4x)^2dx \\
+    &= \pi\int_{0}^{4} (x^4+8x^3+16x^2)dx \\
+    &= \pi\left(\frac{x^5}{5}+2x^4+\frac{16x^3}{3}\right)_{0}^{4} \\
+    &= \pi\left(\frac{1024}{15}+128+\frac{2048}{3}\right) \\
+    &= \frac{15872\pi}{15} \\
+\end{align*}
+
+\question{Problem 4}{}
+
+\textbf{Solution}.
+We use the formula for hydrostatic force:
+\[F=\int_{a}^{b}w(y)ydA\]
+
+where $w(y)$ is the weight density of the fluid at depth $y$ and $dA$ is the area of the plate at depth $y$. 
+In this case, we have $w(y)=\gamma y$ and $A=(3-y)^2/3\implies dA=\frac{2(3-y)}{3}dy$.
+
+Thus, we have:
+\begin{align*}
+    F &= \int_{0}^{3} \gamma y \frac{2(3-y)}{3}dy\\
+      &= \frac{2\gamma}{3}\int_{0}^{3} (3y-y^2)dy\\
+      &= \frac{2\gamma}{3}\left(\frac{3y^2}{2}-\frac{y^3}{3}\right)_{0}^{3}\\
+      &= \frac{2\gamma}{3}\left(\frac{27}{2}-9\right)\\
+      &= 3\gamma \\
+\end{align*}
+Put $\gamma = 90\mathrm{lb}/\mathrm{ft^3}$
+We have the force is $F=270\mathrm{lb}$.
+
+\end{document}

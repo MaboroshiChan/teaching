@@ -1,0 +1,111 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{cancel}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+\newcommand{\sumn}{\sum_{n=0}^{\infty}}
+\newcommand{\ea}{e^{\alpha}}
+\newcommand{\nea}{e^{-\alpha}}
+\newcommand{\vecv}{\mathbf{v}}
+\newcommand{\veca}{\mathbf{a}}
+\newcommand{\vecb}{\mathbf{b}}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\nullity}{\mathrm{nullity}}
+
+
+\question{Problem 1}{(a) Keywords: linear span, matrix multiplication, addition of vector space}
+
+Let $A$ be an $m \times k$-matrix, and let $B$ be a $k \times n$-matrix.
+(a) Prove that the column space of $AB$ is contained in the column space of A.
+
+Subset proof format: Prove the implication 
+
+\[\vec{v} \in Col(AB) \implies \vec{v} \in Col(A)\].
+
+\textbf{Proof.}
+
+Definition of $Col(A)$:
+\[Col(A) := \{A\vecv| \vecv \in \mathbb{R}^n\}\]
+\[Row(A) := \{A^T\vecv| \vecv \in \mathbb{R}^n\}\]
+
+Let $A = [\veca_1, \veca_2, \cdots, \veca_{k}]$, $B = [\vecb_1, \vecb_2, \cdots, \vecb_{n}]$
+Then
+\[AB = [A\vecb_1, A\vecb_2, A\vecb_3,\cdots, A\vecb_n]\]
+
+Let $\vec{v} \in Col(AB)$, then
+\[\vec{v} = \sum_{i=1}^{n}c_iA\vecb_i\]
+
+By \textbf{conservation of addition of vector space}.
+
+\question{Problem 1}{(b) Keywords: Definition of Nullspace.}
+Assume that $k = m$ and that $A$ is invertible. Prove that the null space of $AB$ is equal to the null space of $B$.
+
+\textbf{Proof.($\implies$)}
+
+Let $x\in \mathrm{Null}(B)$, then we can easily see that $ABx=A(Bx)=A\cdot\vec{0}=\vec{0}$
+Thus, $x\in \mathrm{Null}(AB)$
+
+($\Longleftarrow$)
+
+Let $x\in \mathrm{Null}(AB)$, then $ABx = 0$.
+Since $A$ is invertible, $\mathrm{Null}(A) = \{\mathbf{0}\}$.
+This forces $Bx=0$. Therefore, $x\in \mathrm{Null}(B)$.
+\question{Problem 1}{(c) keywords: Rank-nullity theorem, Dimension and rank difference}
+We know that $B$ and $AB$ is $m\times n$.
+Therefore $\dim{AB}=\dim{B} = n$.
+From part (b) we know that $\nullity(AB)=\nullity(B)$.
+Thus, by rank-nullity theorem,
+\begin{align*}
+    \rank(AB)&=\dim(AB)-\nullity(AB)\\
+             &=\dim(B)-\nullity(B)\\
+             &=\rank(B)
+\end{align*}
+
+\textit{Comment: Rank of a matrix is the actual dimension of this matrix} 
+
+\question{Problem 2}{2}
+
+
+
+\end{document}

@@ -1,0 +1,419 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{cancel}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\newcommand{\solution}{\vspace{.10in}\textbf{Solution: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+\question{2}{}
+You and your friend decide to play a dice game. You each know a little about
+probability - for instance, you know that if you roll 2 dice, the most likely number to come up is 7.
+You suggest the following game. You keep rolling the dice one of the following two events happens:
+\begin{itemize}
+    \item If the roll is 3 or 11, you friend wins.
+    \item if a 7 comes twice before a 3 or 11 is rolled, you win.
+\end{itemize}
+Each roll is mutually independent.
+
+\part{a} What is the probability that you win and what is the probability that your friend wins?
+
+\solution
+
+Let $FW$ be the event that my friend wins, and $MW$ be the event that I win.
+
+\begin{align*}
+        P(\lnot(3 \lor 11))   &= 1 - P(3 \lor 11) \\
+           &= 1 - P(A = 1 \land B = 2) - P(A = 2 \land B = 1) - P(A = 5 \land B = 6) - P(A = 6 \land B = 5) \\
+           &= 1 - \frac{1}{36} - \frac{1}{36} - \frac{1}{36} - \frac{1}{36} \\
+           &= 1 - \frac{4}{36}  = \frac{32}{36}
+\end{align*}
+
+And 
+\begin{align*}
+    P(\lnot 3 \lnot 7 \lnot 11) = \frac{8}{9} - \frac{1}{6} = \frac{13}{18}
+\end{align*}
+
+Thus,
+\begin{align*}
+    P(FW) &= P\left( 3\  or\  11\right)  \cdot P\left( FW|3\  or\  11\right)  +P\left( 7\right)  P\left( FW|7\right) + P(others) P(FW|others) \\
+    P\left( FW|7\right)  &= P\left( 7\right)  P\left( FW|77\right)  +P\left( 3\  or\  11\right)  P\left( FW|7|3or11\right)  +P\left( other\right)  P\left( FW|7\right)
+\end{align*}
+
+Thus,
+
+\begin{equation*}
+    \begin{cases}
+        P(FW) = \frac{4}{36} \cdot 1 + \frac{1}{6} \cdot P(FW|7) + \frac{13}{18} \cdot P(FW) \\
+        P(FW|7) = \frac{4}{36} \cdot 1 + \frac{13}{18}F(FW|7) \\
+    \end{cases}
+\end{equation*}
+It gives
+\begin{equation*}
+    \begin{cases}
+        P(FW) = \frac{16}{25} \\
+        P(FW|7) = \frac{2}{5} \\
+    \end{cases}
+\end{equation*}
+Thus $P(MW) = 1 - \frac{16}{25} = \frac{9}{25}$
+
+\part{2}
+You decide to play for money. Every time a 3 or 11 comes up, you pay your friend \$3. Every time a 7 comes up, he pays you \$2. What is your expected winnings per die roll?
+
+\solution
+
+Let $M$ be the random variable of my winnings per die roll.
+\begin{equation}
+    E(M) = (-3)\frac{4}{36} + 2\frac{6}{36} = 0
+\end{equation}
+
+\part{c}
+How many dice rolls would you expect there to be before a 3, 7, or 11 is rolled?
+
+\solution
+
+Let $X$ be the random variable of the number of dice rolls before a 3, 7, or 11 is rolled.
+We need to calculate $E(X)$. And let $A$ be the number of 3, 7, or 11 is rolled in the first roll.
+Thus, 
+\begin{equation}
+    E\left( X|A\right)  =\begin{cases}1&\text{with probability} \  5/18\\ 1+E(X)&\text{with probability} \  13/18\end{cases} 
+\end{equation}
+    
+Then, we have
+\begin{align*}
+    E(X) &= E\left( E\left( X|A\right) \right) \\
+         &= \frac{5}{18} \times 1 + \frac{13}{18} \times \left(1 + E(X)\right) \\
+         &= 1 + \frac{13}{18} E(X) \\
+    \frac{5}{18} E(X) &= 1 \\
+    E(X) &= \frac{18}{5}
+\end{align*}
+
+\part{c} How many dice roll would you expect before someone wins the original game? That is, how many dice rolls would you expect before a 7 is rolled twice or a 3 or 11 is rolled once?
+
+\solution
+
+Let $X$ be the random variable of the number of dice rolls before a 7 is rolled twice or a 3 or 11 is rolled once.
+Let $Y$ be the random variable of the number of dice rolls before a 7 is rolled once or a 3 or 11 is rolled once.
+
+We need to calculate $E(X)$. And let $A$ be the value of the first roll.
+Thus,
+\begin{align*}
+    E(X) = E(E(X|A)) &= E(X|A=3 \lor A=11) \times P(A = 3 \lor A=7) + E(X|A = 7) \times P(A=7) \\
+                     &+ E(X| A \neq 3 \land A \neq 11 \land A \neq 7) \times P(A \neq 3 \land A \neq 11 \land A \neq 7) \\
+                     &= 1 \times P(A = 3 \lor A=11) + (1 + E(Y)) \times P(A=7) + (1 + E(X)) \times P(A \neq 3 \land A \neq 11 \land A \neq 7) \\
+\end{align*}
+
+And
+
+\begin{align*}
+    E(Y) = E(E(Y|A)) &= E(Y|A=3 \lor A=11) \times P(A = 3 \lor A=7) + E(Y|A = 7) \times P(A=7) \\ 
+                     &+ E(Y| A \neq 3 \land A \neq 11 \land A \neq 7) \times P(A \neq 3 \land A \neq 11 \land A \neq 7) \\
+                     &= 1 \times P(A = 3 \lor A=11) + 1 \times P(A=7) + (1 + E(Y)) \times P(A \neq 3 \land A \neq 11 \land A \neq 7) \\
+\end{align*}
+
+Note that $P(A = 3 \lor A=11) = \frac{1}{9}$, $P(A=7) = \frac{1}{6}$, $P(A \neq 3 \land A \neq 11 \land A \neq 7) = \frac{13}{18}$.
+
+Let $x=E(X), y=E(Y)$, we have a system of equations:
+
+\begin{align*}
+    x &= 1 \times \frac{1}{9} + (1 + y) \times \frac{1}{6} + (1 + x) \times \frac{13}{18} \\
+    y &= 1 \times \frac{1}{9} + 1 \times \frac{1}{6} + (1 + y) \times \frac{13}{18} \\
+\end{align*}
+
+solve this we have $x = \frac{144}{25}, y = \frac{18}{5}$.
+
+\question{4}{}
+You are in a class of $200$ people. Let $X$ be the number of different birthdays among these 200 people (assuming no one was born on February 29, i.e., on a leap year). Determine the expected value $E(X)$ of $X$.
+Hint: Use indicator random variables.
+
+\solution
+
+Let $X_i$ be the indicator random variable of the date $i$ is the birthday of at least one person in the class.
+Then, we have
+
+\begin{equation}
+    X = \sum_{i=1}^{365} X_i
+\end{equation}
+
+And
+
+\begin{equation}
+    E(X) = E\left(\sum_{i=1}^{365} X_i\right) = \sum_{i=1}^{365} E(X_i) = \sum_{i=1}^{365} P(X_i = 1)
+\end{equation}
+
+Note that $P(X_i = 1) = 1 - P(X_i = 0) = 1 - \left(\frac{364}{365}\right)^{200}$.
+
+Thus,
+
+\begin{equation}
+    E(X) = 365 \times \left(1 - \left(\frac{364}{365}\right)^{200}\right)
+\end{equation}
+
+\question{5}{}
+Consider a fair 6-sided die. 
+
+\part{a} Roll the die twice. What is the expected value of the highest number?
+
+\solution
+
+Let $X, Y$ be the random variables of the first and second roll, respectively.
+Let $Z = \max(X, Y)$
+
+Then, we have
+
+\begin{align*}
+    E(Z) &= \sum_{i=1}^{6}\sum_{j=1}^{6}\max(i,j)P(X=i)P(Y=j) \\
+         &= 2\sum_{i \le j}jP(X=i)P(Y=j) - \sum_{i=1}^{6}iP(X=i)P(Y=i) \\
+         &= 2\sum_{j=1}^{6}\sum_{i=1}^{j} jP(X=i)P(Y=j) - \frac{7} {12} \\
+         &= 2\sum_{j=1}^{6} jP(Y=j) \sum_{i=1}^{j} P(X=i) - \frac{7} {12}\\
+         &= 2\sum_{j=1}^{6} jP(Y=j) \sum_{i=1}^{j} \frac{1}{6}- \frac{7} {12} \\
+         &= 2\sum_{j=1}^{6} jP(Y=j) \frac{j}{6} - \frac{7} {12}\\
+         &= \frac{1}{18}\sum_{j=1}^{6} j^2 - \frac{7} {12}\\
+         &= \frac{1}{3} \times \frac{6 \times 7 \times 13}{6} - \frac{7} {12}\\
+         &= \frac{161}{36}
+\end{align*}
+
+\part{b} Roll the die once. If the number is $ > 3$ keep that number. Otherwise roll the die again and keep the highest of the two rolls. What is the expected value?
+
+\solution
+
+Let $Y$ be the random variable of the number of the first roll, and let $X$ be final number we keep.
+
+Then, we have
+
+\begin{align*}
+    E(X) &= E(E(X|Y)) \\
+         &= E(X|Y>3)P(Y>3) + E(X|Y\le 3)P(Y\le 3) \\
+\end{align*}
+
+Note that $E(X|Y>3) = E(Y|Y>3) = \frac{4+5+6}{3} = 5$, and 
+\begin{align*}
+    E(X|Y \le 3) &= E(\max(Y, Z) | Y \le 3)
+\end{align*}
+    
+    where $Z$ is the second roll. Note that $Z$ is independent of $Y$. Thus,
+
+\begin{align*}
+    E(X|Y \le 3) &= E(\max(Y, Z) | Y \le 3) \\
+                 &= \sum_{i=1}^{3} \sum_{j=1}^{6} \max(i, j) P(Y=i) P(Z=j) \\
+                 &= \sum_{i=1}^{3} \sum_{j=1}^{3} \max(i,j) P(Y=i) P(Z=j) + \sum_{i=1}^{3} \sum_{j=4}^{6} j P(Y=i) P(Z=j) \\
+                 &= \sum_{1\le i \le j \le 3} j P(Y=i) P(Z=j) + \sum_{1\le j < i \le 3} i P(Y = i)P(Z = j) + \sum_{i=1}^{3} \sum_{j=4}^{6} j P(Y=i) P(Z=j) \\
+                 &= 1 \cdot P(Y = 1) P(Z = 1) + 2 \cdot P(Y = 1) P(Z = 2) + 2 \cdot P(Y = 2) P(Z = 2) + 3 \cdot P(Y = 1) P(Z = 3) \\
+                 &+ 3 \cdot P(Y = 2) P(Z = 3) + 3 \cdot P(Y = 3) P(Z = 3) \\ 
+                 &+ 2 \cdot P(Y = 2) P(Z = 1) + 3 \cdot P(Y = 3) P(Z = 1) + 3 \cdot P(Y = 3) P(Z = 2) \\
+                 &+ \sum_{i=1}^{3} \sum_{j=4}^{6} j P(Y=i) P(Z=j) \\ 
+\end{align*}
+
+Note that $P(Y = i) = \frac{1}{3}, P(Z = i) = \frac{1}{6}$,
+
+\begin{align*}
+    E(X|Y \le 3) &= \frac{1}{18} + \frac{2}{18} + \frac{2}{18} + \frac{3}{18} + \frac{3}{18} + \frac{3}{18} + \frac{2}{18} + \frac{3}{18} + \frac{3}{18} + \sum_{i=1}^{3} \sum_{j=4}^{6} j \frac{1}{18} \\
+                 &= \frac{7}{9} + \frac{2}{18} + \frac{3}{18} + \frac{3}{18} +\frac{1}{18} \sum_{i=1}^{3} \sum_{j=4}^{6} j \\
+                 &= \frac{11}{9} + \frac{45}{18}\\
+                 &= \frac{67}{18}
+\end{align*}
+
+Finally, we have
+
+\begin{align*}
+    E(X) &= E(X|Y>3)P(Y>3) + E(X|Y\le 3)P(Y\le 3) \\
+         &= 5 \times \frac{1}{2} + \frac{67}{18} \times \frac{1}{2} \\
+         &= \frac{157}{36} \approx 4.3611
+\end{align*}
+
+\part{c} Roll the die once. If the number is $ > 4$ keep that number. Otherwise roll the die again and keep the highest of the two rolls. What is the expected value? What strategy gives us the highest value on average?
+
+\solution
+
+Let $Y$ be the random variable of the number of the first roll, and let $X$ be final number we keep.
+
+Then, we have
+
+\question{6}{}
+
+In this question we will consider bitstrings. A bit is called lonely if it is a $1$ and every adjacent bit is a $0$. A bit is not lonely if it is a $1$ and it is adjacent to at least one other $1$.
+
+\part{a}
+Consider a random bitstring of length 10. What is the expected number of lonely bits?
+
+\solution
+
+Let $X_i$ be the indicator random variable of the $i$-th bit is lonely.
+Then, we have
+
+\begin{equation}
+    X = \sum_{i=1}^{10} X_i 
+\end{equation}
+
+And
+
+\begin{equation}
+    E(X) = E\left(\sum_{i=1}^{10} X_i\right) = \sum_{i=1}^{10} E(X_i) = \sum_{i=1}^{10} P(X_i = 1)
+\end{equation}
+
+Note that for $i = 1$ and $i = 10$, $P(X_i = 1) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$.
+While for $i \in [2, 9]$, $P(X_i = 1) = \frac{1}{2} \times \frac{1}{4} = \frac{1}{8}$.
+
+Thus,
+
+\begin{equation}
+    E(X) = 2 \times \frac{1}{4} + 8 \times \frac{1}{8} = \frac{3}{2}
+\end{equation}
+
+\part{b} We choose a bitstring uniformly at random from all bitstrings of length 5 with exactly three 1's. What is the expected number of lonely bits?
+
+\solution
+
+\begin{align*}
+    E(\text{lonely}) &= 3\cdot\frac{1}{10} + 1\cdot\frac{6}{10}+ 0\cdot\frac{3}{10}\\
+                     &= \frac{9}{10} \\
+\end{align*}
+
+\part{c} what is the expected number of not lonely bits?
+
+\solution
+
+Let $X_i$ be the indicator random variable of the $i$-th bit is \textit{not lonely}.
+Then, we have
+
+\begin{equation}
+    X = \sum_{i=1}^{10} X_i
+\end{equation}
+
+And
+
+\begin{equation}
+    E(X) = E\left(\sum_{i=1}^{10} X_i\right) = \sum_{i=1}^{10} E(X_i) = \sum_{i=1}^{10} P(X_i = 1)
+\end{equation}
+
+Note that for $i = 1$ and $i = 10$, $P(X_i = 1) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$.
+While for $i \in [2, 9]$, $P(X_i = 1) = \frac{1}{2} \times \frac{3}{4} = \frac{3}{8}$.
+
+Thus,
+
+\begin{equation}
+    E(X) = 2 \times \frac{1}{4} + 8 \times \frac{3}{8} = \frac{7}{2}
+\end{equation}
+
+\part{d} We choose a bitstring uniformly at random from all bitstrings of length 10 with exactly four 1's. What is the expected number of lonely and not lonely bits?
+
+\solution
+
+\begin{align*}
+    E(\text{lonely}) &= 4\cdot\frac{\binom{7}{4}}{\binom{10}{4}} + 2 \cdot \frac{\binom{7}{1}\binom{6}{2}}{\binom{10}{4}} + 1 \cdot \frac{\binom{7}{1}\binom{6}{1}}{\binom{10}{4}} + 0 \cdot \frac{\binom{7}{1} + \binom{7}{2}}{\binom{10}{4}} \\
+        &= 4\cdot \frac{35}{210} + 2 \cdot \frac{7 \cdot 15}{210} + 1 \cdot \frac{7 \cdot 6}{210} + 0 \cdot \frac{7 + 21}{210} \\
+        &= \frac{28}{15}
+\end{align*}
+
+\begin{align*}
+    E(\text{not lonely}) &= 4 - E(\text{lonely}) \\
+                         &= \frac{32}{15}
+\end{align*}
+
+\question{7}{} We have a fair, 6-sided die. We roll this die until the sum of all rolls is $\ge 2$. Let X be the number of rolls, and let Y be the sum of all the rolls.
+
+\part{a} What is $E(X)$, use the formula $E(X)=\sum_{\forall k} k\cdot P(X=k)$.
+
+\solution
+
+\begin{align*}
+    E(X) &= 1\cdot P(X=1) + 2\cdot P(X=2) + 0 \\
+         &= 1\cdot\frac{5}{6} + 2\cdot\left(\frac{1}{6}\cdot 1\right) \\
+         &= \frac{7}{6}
+\end{align*}
+
+\part{b} What is $E(Y)$, use the formula $E(Y)=\sum_{\forall k} k\cdot P(Y=k)$.
+
+\solution
+The expected value is
+\begin{equation*}
+ \left(2 + 3+4+\cdots +6\right)  \cdot \left( \frac{1}{6} +\frac{1}{36} \right)  +7\cdot \frac{1}{36} =\frac{49}{12}
+\end{equation*}
+
+\part{c} Let D be the value of a single die roll. We have seen in class that $E(D) = 3.5$. What is $E(X) \cdot E(D)$?
+
+\solution
+
+\begin{equation*}
+    E(X) \cdot E(D) = \frac{7}{6} \cdot 3.5 = \frac{7}{6} \cdot \frac{7}{2} = \frac{49}{12}
+\end{equation*}
+
+\part{d} This is an example of Wald's Identity. Wald's Identity tells us that if X is the number of die rolls, and the value of $X$ depends on a stopping condition (which it does in this case), then the expected sum $E(Y) = E(X) \cdot E(D)$. Find $E(X)$ if X is the number of rolls until the sum is $\ge 3$. Then find the corresponding value $E(Y)$ using Wald's Identity.
+
+\solution
+
+Let $X$ be the random variable of the number of rolls until the sum is $\ge 3$.
+Then, we have
+
+\begin{align*}
+    E(X) &= 1\cdot P(X=1) + 2\cdot P(X=2) + 3\cdot P(X=3) \\ 
+         &= 1\cdot \frac{4}{6} + 2\cdot \left(\frac{1}{6}\cdot\frac{5}{6} + \frac{1}{6}\cdot 1\right) + 3\cdot\left(\frac{1}{6}\cdot\frac{1}{6}\cdot 1\right) \\
+         &= \frac{49}{36}
+\end{align*}
+
+Thus $E(Y) = E(X) \cdot E(D) = \frac{49}{36} \cdot 3.5 = \frac{343}{72}$.
+
+\question{8}{}
+
+If $X$ is a random variable that can take any value n where n is an integer and $n \ge 1$, and if A is an event, then the conditional expected value $E(X|A)$ is defined as
+\begin{equation}
+    E(X|A) = \sum_{k=1}^{\infty} k\cdot P(X=k|A)
+\end{equation}
+
+You roll a fair six-side die repeatedly until you see the number 6. Define the random variable $X$ to be the number of die rolls
+(including the last roll where you see 6). We have seen in class that $E(X) = 6$. Let A be the event
+
+\[A = \text{“You do not roll 6 on the first two rolls”.}\]
+
+What is $E(X|A)$?
+
+\solution
+
+\begin{align*}
+    E(X|A) &= \sum_{k=1}^{\infty} k\cdot P(X=k|A) \\
+           &= \sum_{k=3}^{\infty} k\cdot P(X=k|A) \\
+           &= \sum_{k=3}^{\infty} k\cdot \frac{1}{6} \left(\frac{5}{6}\right)^{k-3} \\
+           &= 8
+\end{align*}
+    
+\end{document}

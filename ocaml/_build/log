@@ -1,0 +1,5 @@
+# dune init project class
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Workspace root: "/Users/darth_sky/\230\149\153\229\173\166/ocaml"
+# Auto-detected concurrency: 10

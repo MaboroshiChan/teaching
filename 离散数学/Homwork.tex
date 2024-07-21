@@ -1,0 +1,387 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+
+\usepackage[utf8]{inputenc}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+morekeywords={self},              % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ \#3}
+\newcommand{\hmwkDueDate}{\today}
+\newcommand{\hmwkClass}{Discrete Math}
+\newcommand{\hmwkClassTime}{Section A}
+\newcommand{\hmwkClassInstructor}{Professor J}
+\newcommand{\hmwkAuthorName}{\textbf{V} \and \textbf{U}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 3:10pm}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+    
+	Use the Euclidean algorithm to calculate gcd(102,70).
+	Use the extended Euclidean algorithm to write gcd(663,234) as an integer linear combination of 663 and 234.\\
+	\\
+    \textbf{Solution.}
+	Euclidean algorithm can be described as followed:
+
+	\begin{equation}
+		\gcd(a, b) :=
+		\begin{cases*}
+		  a & if $b = 0$ \\
+		  \gcd(b, a\mod b)       & otherwise
+		\end{cases*}
+	\end{equation}
+
+	Thus 
+	\begin{align*}\gcd(102, 70) &= \gcd(20, 32) \\
+		&= \gcd(32, 6) \\
+		&= \gcd(6,2)\\ 
+		&= \gcd(2, 0)\\
+		&= 2
+	\end{align*}
+
+Running the following python code, we have
+	\begin{python}
+		def extended_gcd(a, b):
+			if a < b:
+				a, b = b, a
+
+			old_r, r = a, b
+			old_s, s = 1, 0
+			old_t, t = 0, 1
+
+			while r != 0:
+				quotient = old_r // r
+				old_r, r = r, old_r - quotient * r
+				old_s, s = s, old_s - quotient * s
+				old_t, t = t, old_t - quotient * t
+			
+			print("Bézout coefficients:", (old_s, old_t))
+			print("greatest common divisor:", old_r)
+			print("quotients by the gcd:", (t, s))
+		
+		extended_gcd(663, 234)
+	\end{python}
+	
+	Bézout coefficients: (-1, 3)\\
+	greatest common divisor: 39\\
+	quotients by the gcd: (-17, 6)
+
+	Therefore, $-1 \times 663 + 3 \times 234 = \gcd(663, 234) = 39$
+    \qed
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+	Prove that a number is divisible by $3$ if and only if the sum of its digits is divisible by $3$.\\
+	\\
+	\textbf{Solution.} \\
+	Let $n \in \mathbb{N}$, and let $n = \sum_{k = 0}^{m} a_k10^k$ be the decimal representation of $n$.
+	We need to show
+	\[n \equiv 0 \mod 3 \iff \sum_{k = 0}^{m} a_k \equiv 0 \mod 3\]
+	In fact,
+	\begin{align*}
+		n &= \sum_{k=0}^{m} a_k10^k \\
+		  &= \sum_{k=0}^{m} a_k(3\times 3 + 1)^k \\
+		  &\equiv \sum_{k=0}^{m} a_k \mod 3
+	\end{align*}
+
+	which is sufficient.
+	\qed
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	Prove that all numbers in the sequence
+		\[1007,10017,100117,1001117,\cdots\]
+	are divisible by 53.\\
+	\\
+	\textbf{Solution.}
+
+	The numbers in this sequence can be formulated as
+
+	\[a_n = 100\times 10^{n} + \sum_{k=0}^{n-1}10^{k} + 6\]
+	\[\iff 10(a_n -6) + 6 + 1 = 100 \times 10^{n+1} + \sum_{k=0}^{n}10^k + 6 = a_{n+1}\]
+	\[\iff a_{n + 1} = 10a_n - 53\]
+
+	Thus $a_{n + 1} = 10a_n \mod 53$. $a_0 = 1007 = 19\times 53 \equiv 0 \mod 53$.
+	By induction, $a_{n+1} = 0 \mod 53,\forall n\in \mathbb{N}$.
+	\qed
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+	4.A robot walks around a two-dimensional grid. It starts out at (2,0) and is allowed to take four different types of steps as:
+	\begin{enumerate}
+		\item $(+2,-1)$
+		\item $(+1,-2)$
+		\item $(+1,+4)$
+		\item $(-3,0)$
+	\end{enumerate}
+Prove that this robot can never reach $(0,-1)$.\\
+
+\textbf{Solution.}
+
+Note that the moves of the robot satisfying commutative. 
+
+Let $a, b, c, d$ be the number of moves of $1, 2, 3, 4$.
+we have system of equation
+\begin{equation}
+    \begin{cases}
+      2 + 2a + b + c -3d &= 0\\
+	  -a - 2b + 4c &= -1
+    \end{cases}\,
+\end{equation}
+
+Act $\mod 3$ on this system, we have
+
+\begin{equation}
+    \begin{cases}
+      -a + b + c &= 1\\
+	  -a + b + c &= -1
+    \end{cases}\,
+\end{equation}
+
+which is contradiction. Thus the original system has no solution at all, which implies that the robot has no way to reach $(0, -1)$.
+\qed
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+	NIM is a famous game in which two players take turns removing items from a pile of $n$ items. For every turn, the player can remove one, two, or three items at a time. 
+	The player removing the last item loses. Prove that if each player plays the best strategy possible, the first player wins if $n \not \equiv 1 (\mod 4)$ and the second player wins if $n \equiv 1 (\mod 4)$.
+	(For your interest, refer to the general NIM game at this link).
+\\\\
+	\textbf{Solution.}
+	If $n \equiv 1 \mod 4$, the first player can only change $n$ so that $n$ divided by $4$ remains $1 - 1, 1 - 2 \text{ or } 1 - 3$ which are $0, 3, 2$ excluding $1$.
+	Then in the second turn, the second player can pick a number of items $n$ so that $n \equiv 1 \mod 4$ again. At the end of the game, it will always be the first player taking the last item.
+
+	Therefore, if $n \equiv 1 \mod 4$, the second player wins. Since the NIM game has no draw, under optimal strategy, in any other cases for $n$, the first player wins.
+	\qed
+\end{homeworkProblem}
+
+\pagebreak
+
+%
+% Non sequential homework problems
+%
+
+\begin{homeworkProblem}
+	Find all solutions, if any, to the system:
+	\begin{equation}
+		\begin{cases}
+		  x \equiv 5 \mod 6\\
+		  x \equiv 3 \mod 10\\
+		  x \equiv 8 \mod 15
+		\end{cases}\,
+	\end{equation}
+
+	\textbf{Solution.}
+
+	By the divisibility of primes, the system can be reduced as
+	\begin{equation}
+		\begin{cases}
+		  x \equiv 5 \mod 2\\
+		  x \equiv 5 \mod 3 \\
+		  \\
+		  x \equiv 3 \mod 2\\
+		  x \equiv 3 \mod 5\\
+		  \\
+		  x \equiv 8 \mod 3\\
+		  x \equiv 8 \mod 5
+		\end{cases}\,
+	\end{equation}
+
+	After Simplification.
+	\begin{equation}
+		\begin{cases}
+		  x \equiv 1 \mod 2\\
+		  x \equiv 2 \mod 3\\
+		  x \equiv 3 \mod 5
+		\end{cases}\,
+	\end{equation}
+    By Chinese remainder theorem, 
+	It has an unique solution in $\mathbb{Z}/30\mathbb{Z}$. After enumeration, 
+	\[x \equiv 23 \mod 30\]
+	\qed
+\end{homeworkProblem}
+
+% Continue counting to 19
+\begin{homeworkProblem}
+    Show with the help of Fermat's little theorem that if $n$ is a positive integer, then $42|n^7 - n$. \\ \\
+	\textbf{Solution.}\\
+	By divisibility of prime, we need only to show $2 | n^7 - n$, $3 | n^7 - n$, and $7 | n^7 - n$.\\
+	By Fermat's Little Theorem ($n^p \equiv n \mod p, \forall p\in \mathrm{prime}$), \[7 | n^7 - n\].
+	Likewise,
+	\[n^7 = n^2 n^2 n^2 n \equiv n n n n = n^2 n^2 \equiv nn = n^2 = n \mod 2\]
+	Also,
+	\[n^7 = n^3 n^3 n \equiv n n n = n^3 \equiv n \mod 3\]
+	Thus the proof is as desired.
+	\qed
+\end{homeworkProblem}
+
+\end{document}

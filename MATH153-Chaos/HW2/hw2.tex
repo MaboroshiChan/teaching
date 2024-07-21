@@ -1,0 +1,113 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{cancel}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+
+
+\question{1}{The Lotka-Volterra predator-prey model revisited.}
+The equation is as presented:
+\begin{align*}
+  \frac{dx}{dt} &= \gamma(xy - x) \\
+  \frac{dy}{dt} &= \frac{1}{\gamma}(y-xy)
+\end{align*}
+
+where
+
+\[
+   E(x, y) = \frac{1}{\gamma^2} (\ln x - x) + \ln y - y = T(x) + V(y)
+\]
+
+We verify that
+\begin{align*}
+  \frac{dE}{dt} &= \frac{1}{\gamma^2}\left(\frac{\dot{x}}{x} - \dot{x}\right) + \left(\frac{\dot{y}}{y} - \dot{y}\right) \\
+                &= \frac{1}{\gamma^2}\left(\gamma(y-1)-\gamma(xy-x)\right) + \left(\frac{1}{\gamma}(1-x)-\frac{1}{\gamma}(y-xy)\right)\\
+                &= \frac{1}{\gamma}(y-1+x-xy + 1 - x+ xy -y)\\
+                &= 0
+\end{align*}
+
+We make the substitution $p=\ln(x), q=\ln(y)$. Then
+\[H(p,q) = E(x,y) = \frac{1}{\gamma^2}(p-e^p) + (q - e^q)\]
+
+We compute the Hessian Matrix.
+
+\begin{align*}
+  H &= \begin{bmatrix}\frac{\partial^{2} E}{\partial x^{2}} &\frac{\partial^{2} E}{\partial x\partial y} \\ \frac{\partial^{2} E}{\partial x\partial y} &\frac{\partial^{2} E}{\partial y^{2}} \end{bmatrix} \\
+    &= \begin{bmatrix}\frac{1}{x^{2}\gamma^{2} } &0\\ 0&\frac{1}{y^{2}} \end{bmatrix}
+\end{align*}
+Noted that $H$ is symmetric and all its eigenvalues are positive, $H$ is postive definite. 
+
+\question{3}{}
+
+Suppose \[\dot{x} = f(x)\] with a graph. Show that it has no \textit{conserved quantity}.
+
+\textit{proof.}
+Assume the contrary, that there is a $E(x)$ such that $\frac{dE}{dt} = 0$.
+Then
+\[0=\frac{dE}{dt} = \dot{x}\frac{dE}{dx}=f(x)\frac{dE}{dx}\]
+From aboved, we can see that whenever $f(x)\neq 0$, $dE/dx = 0$. Since there is a continous interval in which $f(x)\neq 0$, in this area, $E(x)$ is a constant. This creates a contradiction.
+
+\question{4}{Competing species}
+Consider the system
+\begin{align*}
+  \frac{dx}{dt} &= x(1-y) \\
+  \frac{dy}{dt} &= y(1-x)
+\end{align*}
+(a) Find two fixed points,and classify them by computing the Jacobian matrix at each of them and analyzing its eigenvalues.
+
+\textit{solution.}
+The fixed points are $(0,0)$ and $(1,1)$. The Jacobian matrix is
+\begin{align*}
+  J &= \begin{bmatrix}\frac{\partial f}{\partial x} &\frac{\partial f}{\partial y} \\ \frac{\partial g}{\partial x} &\frac{\partial g}{\partial y} \end{bmatrix} \\
+    &= \begin{bmatrix}1-y &-x \\ -y &1-x \end{bmatrix}
+\end{align*}
+At $(0,0)$, $J = \begin{bmatrix}1 &0 \\ 0 &1 \end{bmatrix}$, which has eigenvalues $1$ and $1$. So it is a unstable node.
+At $(1,1)$, $J = \begin{bmatrix}0 &-1 \\ -1 &0 \end{bmatrix}$, which has eigenvalues $1$ and $-1$. So it is a saddle point.
+
+(b) Show that there is no conserved quantity for this system.
+
+\textit{solution.}
+
+
+\end{document}

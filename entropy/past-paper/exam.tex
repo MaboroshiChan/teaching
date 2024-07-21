@@ -1,0 +1,377 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{cancel}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+\newcommand{\sumn}{\sum_{n=0}^{\infty}}
+\newcommand{\ea}{e^{\alpha}}
+\newcommand{\nea}{e^{-\alpha}}
+\newcommand{\expo}{\left(-\beta n\epsilon\right)}
+\newcommand{\dif}{\mathrm{d}}
+
+\question{Problem (a) Solution}{}
+For a particular macrostate, the microstates of a system are fully characterized by
+a single, continous, real variable $x$, drawn stochastically from a probability density function $p(x)$.
+In such case, the Gibbs Entropy is obtained from 
+\[S = -k\int p(x)\log p(x)\]. Supposing that:
+% write a piecewise function for p(x)
+\[p(x) = \begin{cases}
+    c & \text{if } x \in [0,m] \\
+    0 & \text{otherwise}
+\end{cases}\]
+i. Find the expression of $c$ in terms of $m$.
+\begin{align*}
+    \int_{0}^{m} p(x) dx &= 1 \\
+    \int_{0}^{m} c dx &= 1 \\
+    c\int_{0}^{m} dx &= 1 \\
+    c\cdot m &= 1 \\
+    c &= \frac{1}{m}
+\end{align*}
+ii. Evaluate the mean and variance of this distribution.
+\begin{align*}
+    \mu &= \int_{0}^{m} x\cdot p(x) dx \\
+    &= \int_{0}^{m} x\cdot \frac{1}{m} dx \\
+    &= \frac{1}{m}\int_{0}^{m} x dx \\
+    &= \frac{1}{m}\cdot \frac{m^2}{2} \\
+    &= \frac{m}{2} \\
+    \sigma^2 &= \int_{0}^{m} (x-\mu)^2\cdot p(x) dx \\
+    &= \int_{0}^{m} (x-\frac{m}{2})^2\cdot \frac{1}{m} dx \\
+    &= \frac{1}{m}\int_{0}^{m} (x-\frac{m}{2})^2 dx \\
+    &= \frac{1}{m}\int_{0}^{m} x^2 - mx + \frac{m^2}{4} dx \\
+    &= \frac{1}{m}(\frac{m^3}{3} - \frac{m^3}{2} + \frac{m^3}{4}) \\
+    &= \frac{m^2}{12}
+\end{align*}
+iii. Evaluate the entropy of the system, in units of Boltzmann's constant.
+\begin{align*}
+    S &= -k\int_{0}^{m} p(x)\log p(x) dx \\
+    &= -k\int_{0}^{m} \frac{1}{m}\log \frac{1}{m} dx \\
+    &= -k\cdot \frac{1}{m}\int_{0}^{m} \log \frac{1}{m} dx \\
+    &= -k\cdot \frac{1}{m}\cdot \frac{m}{m}\log \frac{1}{m} \\
+    &= k\log m
+\end{align*}
+\question{Problem 1 (b) Solution}{}
+A general expression for the number of ways of distributing $N$ indistinguishable
+particles amongst $M$ boxes is:
+\[W = \frac{(N+M-1)!}{N!(M-1)!}\]
+
+i. For the particular case of distributing 4 indistinguishable particles amongst 3 boxes, explicitly list the number of particles in each box for every state of the system, and so confirm the above formula is correct in that case. In how many of those states are the four particles confined to just the first two boxes? Again, confirm the above formula is correct.
+\begin{align*}
+    W &= \frac{(4+3-1)!}{4!(3-1)!} \\
+    &= \frac{6!}{4!2!} \\
+    &= \frac{6\cdot 5}{2} \\
+    &= 15
+\end{align*}
+% draw a table of the states
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Box 1 & Box 2 & Box 3 & Number of States \\
+        \hline
+        4 & 0 & 0 & 1 \\
+        \hline
+        3 & 1 & 0 & 4 \\
+        \hline
+        3 & 0 & 1 & 4 \\
+        \hline
+        2 & 2 & 0 & 6 \\
+        \hline
+        2 & 1 & 1 & 12 \\
+        \hline
+        2 & 0 & 2 & 6 \\
+        \hline
+        1 & 3 & 0 & 4 \\
+        \hline
+        1 & 2 & 1 & 12 \\
+        \hline
+        1 & 1 & 2 & 12 \\
+        \hline
+        1 & 0 & 3 & 4 \\
+        \hline
+        0 & 4 & 0 & 1 \\
+        \hline
+        0 & 3 & 1 & 4 \\
+        \hline
+        0 & 2 & 2 & 6 \\
+        \hline
+        0 & 1 & 3 & 4 \\
+        \hline
+        0 & 0 & 4 & 1 \\
+        \hline
+    \end{tabular}
+\end{center}
+ii. How many ways are there of distributing 4 distinguishable particles amongst 3 boxes? (i.e. where swapping two particles from two different boxes gives a different microstate).
+\begin{align*}
+    W &= 3^4 \\
+    &= 81
+\end{align*}
+iii. 
+\begin{align*}
+    \log(W(N, M)) &\approx (N+M-1)\log (N+M-1) - N\log N - (M-1)\log (M-1) - (N+M-1) + N + (M-1) \\
+                  &= (N+M-1)\log (N+M-1) - N\log N - (M-1)\log (M-1) \\
+                  &= M\left(\frac{N}{M} + 1 - \frac{1}{M}\right)\log M\left(\frac{N}{M}+1 - \frac{1}{M}\right) 
+\end{align*}
+
+\begin{align*}
+    \log\left(\frac{W(N, M/2)}{W(N, M)}\right) 
+        &= \log(W(N, M/2)) - \log(W(N, M)) \\
+        &\approx N \log (M/2) - N \log N + N - (N \log M - N \log N + N) \\
+        &= N \log (M/2) - N \log M \\
+        &= N \log \frac{1}{2} \\
+\end{align*}
+Thus 
+\[\frac{W(N, M/2)}{W(N, M)} \approx \frac{1}{2^N}\]
+
+Therefore, in just half of the box, the number of states is $2^N$ times less than the total number of states.
+In terms of probability, the chance of finding all $N$ particles in just half of the box is $2^N$ times less than the chance of finding all $N$ particles in the whole box.
+
+\question{Problem 2 (a)}{}
+By considering the change in total entropy when a small amount of heat energy $\Delta E$ flows from System 1 (with entropy $S_1$) to System 2 (with entropy $S_2$), 
+explain why the statistical definition of temperature is:
+\[\frac{1}{T} = \frac{\partial S}{\partial E}\]
+accounts for heat always flowing from warmer systems to colder system. You may assume temperature is positive.
+
+\textbf{Answer:} \\
+\begin{align*}
+    \frac{1}{T_1} - \frac{1}{T_2} &= \frac{\Delta S_1}{\Delta -E_1} - \frac{\Delta S_2}{\Delta E_2} \\
+                                  &= -\frac{\Delta S_1}{\Delta E_1} - \frac{\Delta S_2}{\Delta E_2} \\
+                                  &= -\frac{\Delta (S_1 + S_2)}{\Delta E_1} \\
+                                  &= -\frac{\Delta S}{\Delta E_1} < 0\\
+\end{align*}
+Thus, $\frac{1}{T_1} < \frac{1}{T_2}$, and $T_1 > T_2$.
+In other word, System 1 is warmer thant System 2, and heat flows from warmer systems to colder systems.
+
+\question{Problem 2 (b)}{}
+System A contains $N \gg 1$ objects, each of which can exist in four
+possible states, a single state with zero energy, and three excited states each with energy $\epsilon$.
+
+i. If the total energy of the system is $E_A = n\epsilon$, explain why the number of ways of arranging the energy quanta in System A is:
+\[W = 3^n \frac{N!}{n!(N-n)!}.\]
+\textbf{Answer:} We need to choose $n$ objects from $N$ objects, and then assign each object to one of the three excited states. By principle of mutiplication, the number of ways is:
+\begin{align*}
+    W &= 3^n \frac{N!}{n!(N-n)!}
+\end{align*}
+
+ii. Using Stirling's formula $(\log N! \approx N\log N - N)$, obtain the entropy of System A, and hence show that:
+\[E_A = \frac{3N\epsilon}{3 + q}\]
+where $q = \exp(\beta\epsilon)$, and $\beta = (kT)^{-1}$
+
+\textbf{Solution.} from textbook pg. 36 we have
+\begin{align*}
+    S/k &= \log W \\
+      &= \log \left(3^n \frac{N!}{n!(N-n)!}\right) \\
+      &= \log 3^n + \log N! - \log n! - \log (N-n)! \\
+      &\approx n\log 3 + N\log N - N - (n\log n - n) - ((N-n)\log (N-n) - (N- n))\\
+      &=n\log 3 + N\log N - n\log n - (N-n)\log (N-n) \\
+      &= \log (3^n) + \log N^N - \log n^n - \log (N-n)^{N-n} \\
+      &= \log \frac{3^nN^N}{n^n(N-n)^{N-n}} \\
+\end{align*}
+
+Consider the partition function for a single particle:
+\[Z = \exp(-\beta 0) + 3\exp(-\beta\epsilon) = 1 + 3\exp(-\beta\epsilon)\]
+
+Then we find $\langle E_A \rangle$:
+\begin{align*}
+    \langle E_A \rangle &= \sum_{n=1}^{N} \langle E_n \rangle\\
+                        &= \sum_{n=1}^{N} \frac{0\exp(-\beta 0) + 3\epsilon\exp(-\beta\epsilon)}{Z}\\
+                        &= \sum_{n=1}^{N} \frac{3\epsilon\exp(-\beta\epsilon)}{1 + 3\exp(-\beta\epsilon)}\\
+                        &= \frac{3N\epsilon q^{-1}}{1 + 3q^{-1}}\\
+                        &= \frac{3N\epsilon}{3 + q}\\
+\end{align*}
+
+\question{problem 2(c)}{}
+i. Write down the partition function for one such quantum roto
+
+\textbf{Answer:}
+\begin{align*}
+    Z &= \exp(-\beta 0 ) + \exp(-\beta 0 ) + \exp(-\beta \epsilon) + \exp(-\beta -\epsilon)\\ 
+      &= 2 + \exp(-\beta \epsilon) + \exp(\beta \epsilon)\\
+\end{align*}
+
+ii. Hence obtain the average energy for one quantum rotor at fixed temperature, $T$, and demonstrate that, for System B, which contains $N$ quantum rotors, compute the average energy per rotor.
+
+\textbf{Solution:}
+Let $E_i$ be the energy of the $i$th rotor, and $E'_i, i=1,2,3,4$ be the four energy state for each single rotor  then
+\begin{align*}
+    \langle E_B \rangle &= \sum_{n=1}^{N} \langle E_n \rangle\\
+                        &= \sum_{n=1}^{N}\sum_{i=1}^{4} \frac{E'_i\exp(-\beta E'_i)}{Z}\\
+                        &=\sum_{n=1}^{N}\frac{ \epsilon\exp(-\beta \epsilon) + (-\epsilon)\exp(-\beta(-\epsilon))}{2 + \exp(-\beta \epsilon) + \exp(\beta \epsilon)}\\
+                        &= \epsilon \sum_{n=1}^{N}\frac{p^{-1}-p}{2+p+p^{-1}}\\
+                        &= \epsilon \sum_{n=1}^{N}\frac{1-p^2}{p^2+2p+1}\\
+                        &= \epsilon \sum_{n=1}^{N}\frac{(1+p)(1-p)}{(p+1)^2}\\
+                        &= \epsilon \sum_{n=1}^{N}\frac{1-p}{p+1} = \frac{N\epsilon (1-p)}{p+1}\\
+\end{align*}
+
+\question{Problem 2 (d)}{page 26}
+\textbf{Answer:} 
+
+Common sense suggests that the distribution of energy should even itself out, so that if System 1 has more energy than
+System 2, energy should flow between them until they have about the same energy. This might remind you of an earlier example, with gas molecules.
+
+
+\question{problem 3 (a)}{}
+i. 
+\[Z = \sum_{i=0}^{3}\exp(-\beta E_i) = 1 + \exp(-\beta(\epsilon + fb)) + \exp(-\beta(\epsilon - fb))\]
+The average length
+\begin{align*}
+    \langle x\rangle &= \sum_{i=1}^{3} x_i p_i\\
+                     &= \sum_{i=1}^{3} x_i \frac{\exp(\beta E_i)}{Z}\\
+                     &= \frac{1}{Z}(-b\exp(\beta(\epsilon + fb)) + b\exp(\beta(\epsilon - fb)))\\
+                     &= b\frac{\exp(\beta(\epsilon - fb)) - \exp(\beta(\epsilon + fb))}{Z}\\
+                     &= b\frac{\exp(\beta(\epsilon - fb)) - \exp(\beta(\epsilon + fb))}{1 + \exp(\beta(\epsilon + fb)) + \exp(\beta(\epsilon - fb))}\\
+                     &= b\exp(\beta\epsilon)\frac{q^{-1} - q}{1+\exp(\beta\epsilon)(q^{-1}+q)}\\
+\end{align*}
+Where $q = \exp(\beta fb)$
+
+\question{Problem 3 (b)}{}
+ii. 
+\begin{align*}
+    -\frac{m}{\beta}\frac{\partial \log Z}{\partial m} 
+        &= -\frac{m}{\beta}\frac{1}{Z}\frac{\partial Z}{\partial m}\\
+        &= -\frac{m}{\beta}\frac{1}{Z}\int_{0}^{\infty} \frac{\partial \exp(-\beta(mgh+U))}{\partial m}\dif h\\
+        &= -\frac{m}{\beta}\frac{1}{Z}\int_{0}^{\infty} \exp(-\beta(mgh+U))(-\beta gh)\dif h\\
+        &= \int_{0}^{\infty} \frac{1}{Z}\exp(-\beta(mgh+U))mgh\dif h\\
+        &= \langle G \rangle 
+\end{align*}
+iii.
+The potential energy is 
+\[U(h) = \frac{Ah/h_0 - \log(h/h_0)}{\beta}\]
+where $A$ and $h_0$ are positive constants. Find $h_\mathrm{min}$, which is the value of $h$ that minimises the total potential energy $V$,
+where $V = G + U$, and $G = mgh$.
+
+\textbf{Solution:}
+\begin{align*}
+    \frac{\partial V}{\partial h} &= \frac{\partial G}{\partial h} + \frac{\partial U}{\partial h}\\
+                                  &= mg + \frac{A}{\beta h_0} - \frac{1}{\beta h}\\
+\end{align*}
+Thus, $\frac{\partial V}{\partial h} = 0$ solving for h we have \[h = \frac{h_0}{A + \beta mgh_0}.\]
+
+iv.
+Now we evaluate the integral of $Z$.
+\begin{align*}
+    Z &= \int_{0}^{\infty} \exp(-\beta(mgh+U))\dif h\\
+      &= \int_{0}^{\infty} \exp\left(-\beta\left(mgh+\frac{Ah/h_0 - \log(h/h_0)}{\beta}\right)\right)\dif h\\
+      &= \int_{0}^{\infty} \exp\left(-\beta\left(mgh+\frac{Ah/h_0}{\beta}\right)\right)\exp\left(\log(h/h_0)\right)\dif h\\
+      &= \int_{0}^{\infty} \exp(-\beta mgh - Ah/h_0)\frac{h}{h_0}\dif h\\
+      &= \frac{1}{h_0}\int_{0}^{\infty} \exp(-h(\beta mg + A/h_0))h\dif h\\
+      &= \frac{1}{h_0(\beta mg + A/h_0)^2}
+\end{align*}
+And
+\begin{align*}
+    \langle h \rangle 
+    &= \int_{0}^{\infty} p(h)h \\
+    &= \int_{0}^{\infty} \frac{1}{Z}\exp(-\beta(mgh+U))h\dif h^2\\
+    &= \frac{1}{Zh_0}\int_{0}^{\infty} \exp(-\beta(mgh+U))h\dif h^2\\
+    &= \frac{1}{Zh_0}\int_{0}^{\infty} \exp(-h(\beta mg + A/h_0))h^2\dif h\\
+    &= \frac{1}{Zh_0} \frac{2}{(\beta mg + A/h_0)^3}\\
+    &= \frac{2h_0(\beta mg + A/h_0)^2}{h_0(\beta mg + A/h_0)^3}\\
+    &= \frac{2h_0}{\beta mgh_0 + A} = 2h_\mathrm{min}
+\end{align*}
+
+\question{Problem 4 (a)}{page 66}
+By Stirling's formula, we have
+\begin{align*}
+    S/k = \log(W) &= \log\left(\frac{N^n}{n!}\right) \\
+                  &= n\log(N) - \log(n!) \\
+                  &\approx n\log(N) - (n\log n - n) \\
+                  &= n\log(N) - n\log n + n \\
+\end{align*}
+
+The total entropy is 
+\begin{align*}
+    S = nk(\log N - \log n + 1) = nk(\log (V/v_0) - \log n +1)\\
+\end{align*}
+
+Now we need to find the free energy $F$ in a function of $V$, $n$, $v_0$, $T$ and Boltzmann constant $k$.
+\begin{align*}
+    F &= E - TS = -TS
+\end{align*}
+
+
+
+Note that we assume the ideal gas, there is no interaction potential energy between the gas molecules, 
+so $\frac{\partial E}{\partial V} = 0$, and $\frac{\partial T}{\partial V} = 0$ since $T = \partial E/\partial S$
+\begin{align*}
+    PV &= -\frac{\partial F}{\partial V}V\\
+       &= -\frac{\partial (E - TS)}{\partial V}V\\
+       &= -\left(\frac{\partial E}{\partial V} - T\frac{\partial S}{\partial V}-S\frac{\partial T}{\partial V}\right)V\\
+       &= -\left(-T\frac{\partial S}{\partial V}\right)V\\
+       &= \left(T\frac{\partial S}{\partial V}\right)V\\
+       &= \left(T\frac{\partial (nk(\log V - \log n + 1 - \log v_0))}{\partial V}\right)V\\
+       &= \left(T\frac{nk}{V}\right)V\\
+       &= nkT\\
+\end{align*}
+
+\question{Problem 4 (c)}{page 79}
+\begin{align*}
+    E = -\frac{\epsilon z n}{2}\phi
+\end{align*}
+\begin{align*}
+    E &\to -\left(\frac{1}{2}zJm\right)n m\\
+      &= -\left(\frac{1}{2}z\epsilon m\right)\frac{nv_0}{V} m\\
+      &= -\frac{1}{2V}z\epsilon nv_0 m^2\\
+\end{align*}
+
+\question{Problem 4 (c)}{}
+\[F = E-TS\]
+Then we substitute
+
+\question{Problem 4 (d)}{}
+\[P = \frac{\partial F}{\partial V} = \cdots\]
+\question{Problem 4 (e)}{}
+
+\begin{align*}
+    \frac{\dif P}{\dif \phi} &= -\frac{\epsilon z\phi}{v_0} + \frac{kT}{v_0}\frac{1}{1-\phi}
+\end{align*}
+
+Then we set $\frac{\dif P}{\dif \phi} = 0$ and solve for $\phi$.
+We get two solutions:
+\[\phi = \frac{1}{2}\pm \sqrt{\frac{1}{4}-\frac{1}{c}}\]
+where $c = \frac{z\epsilon}{kT}$.
+
+If $c < 4$, then $P$ is a monotonic function Thus when $c > a = 4$ is a critical point.
+
+\question{Problem 5}{page 72-73}
+(a)
+
+\end{document}

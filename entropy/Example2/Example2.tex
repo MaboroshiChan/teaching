@@ -1,0 +1,216 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{cancel}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Shi You}  % your name
+\newcommand\ANDREWID{0xfffff}     % your andrew id
+\newcommand\HWNUM{2}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+\newcommand{\sumn}{\sum_{n=0}^{\infty}}
+\newcommand{\ea}{e^{\alpha}}
+\newcommand{\nea}{e^{-\alpha}}
+\newcommand{\expo}{\left(-\beta n\epsilon\right)}
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\solution}{\textbf{Solution:}}
+
+\question{Problem 1}{}
+A perfect crystal comprises $N$ atoms placed on $N$ lattice sites. Defects are formed when an 
+atom moves from a lattice site onto and interstitial site. There are $M$ interstitial sites available in the crystal.
+Each atom moving from the lattice site to an interstitial site requires an energy $\epsilon$.
+
+(a) Suppose $n$ atoms move onto interstitial sites, requiring a total energy $E=n\epsilon$.
+How many ways are there of removing $n$ atoms from the lattice sites? How many ways are there of distributing the $n$ atoms among the $M$ interstitial sites?
+By multiplying these together, obtain the total number of ways $W$ of moving $n$ atoms onto interstitial sites.
+
+\solution
+
+The number of ways of removing $n$ atoms from the lattice sites is $N\choose n$.
+The number of ways of distributing the $n$ atoms among the $M$ interstitial sites is identical to the number of ways of distributing $n$ identical balls into $M$ distinct boxes, which is $M+n-1\choose n$.
+By multiplying these together, we obtain the total number of ways $W$ of moving $n$ atoms onto interstitial sites:
+\begin{equation}
+    W={N\choose n}{M\choose n}
+\end{equation}
+
+(b) Using the microcanonical ensemble, calculate the entropy for $n$ defect atoms, with energy $E=n\epsilon$ and so calculate the temperature.
+
+\solution
+
+The entropy is given by the Boltzmann formula: 
+\begin{equation}
+    S=k_B\ln W=k_B\ln\left[{N\choose n}{M\choose n}\right]
+\end{equation}
+
+By using Stirling's approximation ($\log n! \approx n\log n - n$), we have:
+\begin{align*}
+    S &= k_B\log W\\
+      &= k_B\log\left[{N\choose n}{M\choose n}\right]\\
+      &= k_B\log\left[\frac{N!}{n!(N-n)!}\frac{M!}{n!(M-n)!}\right]\\
+      &= k_B\log\left[\frac{N!}{n!(N-n)!}\right]+k_B\log\left[\frac{(M+n-1)!}{n!(M-1)!}\right]\\
+      &= k_B\left[\log N!-\log n!-\log(N-n)!\right]+k_B\left[\log(M+n-1)!-\log n!-\log(M-1)!\right]\\
+      &= k_B\left[N\log N-n\log n-(N-n)\log(N-n)\right]+k_B\left[(M+n-1)\log(M+n-1)-n\log n-(M-1)\log(M-1)\right]\\
+      &= k_B\left[2\log n - \log(N-n) - \log(M-n)\right]
+\end{align*}
+
+The temperature is given by the inverse of the derivative of the entropy with respect to the energy:
+\begin{align*}
+    \frac{1}{T}&=\frac{\partial S}{\partial E}=\frac{\partial S}{\partial n}\frac{\partial n}{\partial E}=\frac{k_B}{\epsilon}\frac{\partial }{\partial n}\ln\left[{N\choose n}{M\choose n}\right]\\
+               &=\frac{k_B}{\epsilon}\frac{\partial}{\partial n}\left[N\log N-n\log n-(N-n)\log(N-n)+(M+n-1)\log(M+n-1)-n\log n-(M-1)\log(M-1)\right]\\
+               &=\frac{k_B}{\epsilon}\left[-(\log n + 1) + -(\log (N-n) + 1) + (\log(M+n-1)+1)-(\log n + 1) - (\log (M-1) + 1)\right]\\
+               &=\frac{k_B}{\epsilon} [\log(N-n) + \log(M-n) - 2\log n]
+\end{align*}
+
+Thus, 
+\begin{align*}
+    -\frac{\epsilon}{k_BT}
+        &=2\log n - \log(N-n) - \log(M-n)\\
+        &=\log\left(\frac{n^2}{(N-n)(M-n)}\right)
+\end{align*}
+
+Taking the exponential of both sides, we have:
+\begin{align*}
+    \exp\left(-\frac{\epsilon}{k_BT}\right) = \frac{n^2}{(N-n)(M-n)}
+\end{align*}
+
+\question{Problem 4}{}
+(a) Can you show taht the work done by an external pressure $p$ in changing the volue of a
+a system by $\Delta V$ is
+\begin{equation}
+    \Delta W = -p \Delta V.
+\end{equation}
+
+\solution
+
+The work done by an external pressure $p$ in changing the volume of a system by $\Delta V$ is given by:
+\begin{equation}
+    \Delta W = \int_{V_1}^{V_2}p\mathrm{d}V
+\end{equation}
+
+Since $p$ is constant, we have:
+\begin{align*}
+    \Delta W &= \int_{V_1}^{V_2}p\mathrm{d}V\\
+             &= p\int_{V_1}^{V_2}\mathrm{d}V\\
+             &= p(V_2-V_1)\\
+             &= -p(V_1-V_2)\\
+             &= -p\Delta V
+\end{align*}
+
+(b) What is the conjugate force for an angle of rotation $\theta$ of some object in the system?
+
+\solution
+
+The conjugate force for an angle of rotation $\theta$ of some object in the system is the torque $\tau$. The work done by the torque is given by:
+
+\begin{equation}
+    \Delta W = \int_{\theta_1}^{\theta_2}\tau\mathrm{d}\theta
+\end{equation}
+
+\question{Problem 6}{}
+(a) A single quantum harmonic oscillator has states with energies $E = m\epsilon$ where $m=1,2,\cdots$. Write down the partition function, and energy, the free energy and the entropy of the oscillator.
+hence obtain the average energy, the free energy and the entropy of the oscillator.
+
+\solution
+
+The partition function is given by:
+\begin{align*}
+    Z &= \sum_{m=1}^\infty e^{-\beta m\epsilon}\\
+      &= \frac{e^{-\beta\epsilon}}{1-e^{-\beta\epsilon}}
+\end{align*}
+
+The energy is given by:
+\begin{align*}
+    E &= -\frac{\partial}{\partial\beta}\ln Z\\
+      &= -\frac{\partial}{\partial\beta}\ln\left(\frac{e^{-\beta\epsilon}}{1-e^{-\beta\epsilon}}\right)\\
+      &= -\frac{\partial}{\partial\beta}\left(-\beta\epsilon-\ln(1-e^{-\beta\epsilon})\right)\\
+      &= \epsilon+\frac{\epsilon e^{-\beta\epsilon}}{1-e^{-\beta\epsilon}}\\
+      &= \epsilon\frac{1+e^{-\beta\epsilon}}{1-e^{-\beta\epsilon}}
+\end{align*}
+
+The free energy is given by:
+\begin{align*}
+    F &= -k_BT\ln Z\\
+      &= -k_BT\ln\left(\frac{e^{-\beta\epsilon}}{1-e^{-\beta\epsilon}}\right)\\
+      &= -k_BT\left(-\beta\epsilon-\ln(1-e^{-\beta\epsilon})\right)\\
+      &= k_BT\left(\beta\epsilon+\ln(1-e^{-\beta\epsilon})\right)\\
+      &= k_BT\left(\frac{\epsilon}{k_BT}+\ln(1-e^{-\beta\epsilon})\right)\\
+      &= \epsilon+\frac{k_BT}{\beta}\ln(1-e^{-\beta\epsilon})
+\end{align*}
+
+The entropy is given by:
+\begin{align*}
+    S &= \frac{E-F}{T}\\
+      &= \frac{\epsilon\frac{1+e^{-\beta\epsilon}}{1-e^{-\beta\epsilon}}-\epsilon-\frac{k_BT}{\beta}\ln(1-e^{-\beta\epsilon})}{T}\\
+      &= \frac{\epsilon\frac{1+e^{-\beta\epsilon}}{1-e^{-\beta\epsilon}}-\epsilon-\frac{k_BT}{\beta}\ln(1-e^{-\beta\epsilon})}{k_BT}\\
+      &= \frac{\epsilon\frac{1+e^{-\beta\epsilon}}{1-e^{-\beta\epsilon}}-\epsilon-\frac{\epsilon}{\beta}\ln(1-e^{-\beta\epsilon})}{\epsilon}\\
+      &= \frac{1+e^{-\beta\epsilon}}{1-e^{-\beta\epsilon}}-1-\frac{1}{\beta}\ln(1-e^{-\beta\epsilon})
+\end{align*}
+
+(b) For N identical but distinguishable harmonic oscillators, write down the partition function, and hence obtain the average energy, the free energy and the entropy.
+
+\solution
+
+The partition function is given by:
+\begin{align*}
+    Z &= \sum_{m=1}^\infty e^{-\beta m\epsilon}\\
+      &= \sum_{m=1}^\infty\left(e^{-\beta\epsilon}\right)^m\\
+      &= \frac{e^{-\beta\epsilon}}{1-e^{-\beta\epsilon}}
+\end{align*}
+
+\question{Problem 10}{}
+“A fair dice always has a greater entropy than a biased dice”. Is this statement true? Explain your answer.
+
+\solution
+
+Yes, this statement is true. The entropy of a dice is given by:
+\begin{equation}
+    S=-k_B\sum_{i=1}^6p_i\ln p_i
+\end{equation}
+
+Note that $\ln(x)$ is a concave function (The second derivative of $\ln(x)$ is $-\frac{1}{x^2}$, which is always negative.), using Jensen's inequality, we have:
+\begin{align*}
+    S &= -k_B\sum_{i=1}^6p_i\ln p_i\\
+      &= k_B\sum_{i=1}^6p_i\ln\left(\frac{1}{p_i}\right)\\
+      &\leq k_B\ln\left(\sum_{i=1}^6p_i\frac{1}{p_i}\right)\\
+      &= k_B\ln 6
+\end{align*}
+
+Thus, the entropy of a dice is always less than or equal to $k_B\ln 6$. Since a fair dice has $p_i=\frac{1}{6}$ for all $i$, the entropy of a fair dice is $k_B\ln 6$. Since the entropy of a biased dice is less than or equal to $k_B\ln 6$, the entropy of a fair dice is always greater than the entropy of a biased dice.
+
+\end{document}

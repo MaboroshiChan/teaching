@@ -1,0 +1,188 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\newcommand{\sumn}{\sum_{k=1}^{n}}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ANDREWID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{02-713, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Carl Kingsford}  % your name
+\newcommand\ANDREWID{ckingsf}     % your andrew id
+\newcommand\HWNUM{1}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+
+\question{1}{The First Problem}
+See the spread sheet.
+
+\question{2}{The second problem}
+From proposition 4.1, and Theorem 2.3 we have
+
+\begin{align*}
+    \sum_{j=1}^{n} j^4 &= \sum_{j=1}^{n} \left(24\binom{j}{4} + 36\binom{j}{3} + 14\binom{j}{2} + \binom{j}{1}\right) \\
+                       &= 24\sum_{j=0}^{n}\binom{j}{4} + 36\sum_{j=0}^{n}\binom{j}{3} + 14\sum_{j=0}^{n}\binom{j}{2} + \sum_{j=0}^{n}\binom{j}{1} \\ 
+                       &= 24\binom{n + 1}{5} + 36\binom{n + 1}{4} + 14\binom{n + 1}{3} + \binom{n + 1}{2} \\
+                       &= \frac{1}{30}n(n+1)(2n+1)(3n^2+3n-1)
+\end{align*}
+
+\question{3}{The third problem}
+We claim that a permutation $w$ has 1 and 2 in the same cycle \textit{if and only if}(why?) the corresponding encoding of permutation $(b_1, b_2, \cdots, b_n)$ have $b_2$ being $b_2 = 1$.
+In this case, $(b_1, b_2, \cdots, b_n)$ maps bijectively to $(b_1, b_3, \cdots, b_n)\in \{0\}\times \{0,1,2\}\times\cdots\times\{0,1,2,\cdots,n-1\}$.
+Thus, 
+\[a(w) = \beta(b_1) + \beta(b_3) + \cdots + \beta(b_n)\]
+whose corresponding generating function is concluded as followed
+\[\sum_{k=1}^{n}a(n,k)x^{k} = \sum_{w\in S_n}x^{a(w)} = x(x+2)\cdots(x+n-1)\]
+
+\pagebreak
+\question{4}{The fourth problem}
+
+Let \[A(x) := \sum_{k=1}^{n} a(n,k)x^{k} = x(x+2)\cdots(x+n-1)\]
+\begin{align*}
+    \sum_{k=0}^{n-1} t(n,k+1)x^{k+1} &= \sumn (c(n, k)-a(n,k))x^k \\
+                      &= \sumn c(n,k)x^k - \sumn a(n,k)x^k \\ 
+                      &= (x+1)A(x) - A(x) \\ 
+                      &= A(x)(x+1-1) = xA(x) \\ 
+                      &= \sumn a(n, k)x^{k+1}
+\end{align*}
+
+For any $1\le k\le n - 1$, comparing the coefficient of $k + 1$ both sides, we get the result.
+
+\question{5}{The fifth problem}
+Select $m$ elements $a_1, a_2, \cdots, a_{n - m}$ (which has $\binom{n}{n - m} = \binom{n}{m}$ ways) from 
+\[[n + 1] = \{1,\cdots, n + 1\}\]
+$[n + 1] - \{a_1, a_2, \cdots, a_{n - m}\}$ has $S(m, k)$
+Construct a block $\{n+1, a_1, \cdots, a_{n - m}\}$
+\[\{\{1,2,3\},\{5,6\},\{7\},\cdots\{n+1, a_1, \cdots, a_{n - m}\}\}\]
+
+Together, 
+
+\question{6}{The sixth problem}
+Note the number of unordered pairs of an $n$-element set is $\binom{n}{2}$.
+And \#inversion =\#(unordered pairs) - $\#(\{\{i, j\} : i < j \land \omega(i) < \omega(j)\})$
+
+$J(n,k)$ denote the number of permutations of $[n]$ with $k$ non-inversions
+It is clear that $I(n, k) = J(n, k)$.
+
+We unpack the definition of $I(n, k)$.
+\[I(n, k) := \#\{\omega : i < j \land \omega(i) > \omega(j) \land i, j \in \omega \land \omega \in S_n\} = \#I\]
+\[J(n, k) := \#\{\omega : i < j \land \omega(i) < \omega(j) \land i, j \in \omega \land \omega \in S_n\} = \#J\]
+\pagebreak
+
+We construct a bijection $\phi : I \to J$ such that
+\[\phi((w_1, w_2, \cdots, w_n)) = (w_n, w_{n-1}, \cdots, w_1) = (w'_1, w'_2, \cdots, w'_n)\]
+in this case we have that $w'_i > w'_j$ if and only if $w_i < w_j$ and $w'_i < w'_j$ if and only if $w_i > w_j$ for all $i, j \in [n]\land i < j$
+Therefore, 
+\[I(n,k) = J(n, k)\]
+
+Thus
+\[I(n, k) = J\left(n, \binom{n}{2} -k\right) = I\left(n, \binom{n}{2} -k\right)\]
+
+\question{7}{The seventh problem}
+Find an explicit formula for $I(n, 3)$ where $n \ge 3$.
+
+We have recursion formula
+\begin{align*}
+    I(n, 3) &= I(n - 1, 0) + I(n - 1, 1) + I(n - 1, 2) + I(n - 1, 3) \\ 
+            &= 1 + (n - 2) + I(n - 1, 2) + I(n - 1, 3) \\
+            &= n - 1 + I(n - 1, 2) + I(n - 1, 3)
+\end{align*}
+
+while
+\begin{align*}
+    I(n, 2) &= I(n - 1, 2) + I(n - 1, 1) + I(n - 1, 0) \\ 
+            &= I(n - 1, 2) + n - 2 + 1 \\
+            &= I(n - 1, 2) + n - 1
+\end{align*}
+and $I(2, 2) = 0$
+
+Thus \[I(n, 2) = \frac{(n - 2)(n + 1)}{2}\]
+
+Hence
+\begin{align*}
+    I(n, 3) &= I(n - 1, 3) + \frac{n(n - 3)}{2} + n - 1 \\
+            &= I(n - 1, 3) + \frac{(n+1)(n-2)}{2}
+\end{align*}
+
+With $I(3,3) = 1$, we have
+\[I(n, 3) = \frac{n(n^2-7)}{6}\]
+\question{8}{The Last Question}
+We decorate the weighted generating function
+\[h(x, y) := \sum_{\omega \in S} x^{c(\omega)}y^{n-c(\omega)} = \sumn x^ky^{n-k} \]
+Replace it with the original one in the proof of Theorem 3.9 we have
+
+\begin{align*}
+    C(x, y) &:= \sumn c(n,k)x^{k}y^{n-k} = \prod_{k=0}^{n-1}(x+ky)\\
+    \text{ we have } C(1, x) &= \sumn C(n, k)x^{n-k} = \prod_{k=0}^{n-1}(1+kx) = \prod_{k=1}^{n-1}(1+kx) 
+\end{align*}
+
+\question{3}{}
+\[A_{n} = 2A_{n - 1} + 6A_{n - 2}\]
+with $A_{0} = 2, A_{1} = 2$
+
+\question{5}{}
+Proof:
+Let $c_1\cdots c_n$ be a string, and $\#$ be the number of string statisfying the condition.
+\begin{align*}
+   a_{n} = \#c_1c_2\cdots c_{n-1}c_n &= \underbrace{\#c_{1}\cdots c_{n-1}2}_{a_{n-1}} \\
+                              &+ \underbrace{\#c_1\cdots c_{n-2} 20}_{a_{n-2}} \\
+                              &+ \underbrace{\#c_1\cdots c_{n-2} 21}_{a_{n-2}} \\
+                              &= a_{n-1} + 2a_{n-2}
+\end{align*}
+
+\question{Male and Female}{}
+
+Let $F_n$ and $M_n$ be the population of males and females respectively.
+We have the recurrrence relation.
+\[(F_{n}, M_{n}) = (F_{n - 1} + , F_{n - 1})\]
+
+\question{Final Question}{}
+Suppose we have a sequence of length $n \ge 2$.
+Then we consider that this sequence ends with
+\[a_1\cdots a_{n-1}A\]
+where $A $ is not Red. Then we have $h_{n - 1}$ in this case
+
+\[a_1\cdots a_{n-1}R\] 
+
+where R is red, then $a_{n-1}$ must not be Red. So in this case $a_{n-1}$ has 2 possibility.
+
+Therefore
+\begin{align*}
+    h_{n} &= \underbrace{\#a_1\cdots a_{n-1}\text{Blue}}_{h_{n-1}} + \underbrace{\#a_1\cdots a_{n-1}\text{White}}_{h_{n-1}} \\
+          &+ \underbrace{\#a_1\cdots a_{n-2}\text{Blue Red}}_{h_{n-2}} + \underbrace{\#a_1\cdots a_{n-2}\text{White Red}}_{h_{n-2}} \\
+          &= 2h_{n-1} + 2h_{n-2}
+\end{align*}
+
+\end{document}

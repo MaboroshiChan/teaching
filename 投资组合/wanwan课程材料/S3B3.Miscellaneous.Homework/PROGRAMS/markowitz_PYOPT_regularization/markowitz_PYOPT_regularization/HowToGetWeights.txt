@@ -1,0 +1,29 @@
+How to run PyPortfolioOpt program to select stocks for a portfolio
+
+1. in pyopt_MODULE.py: 
+select:
+the case number:
+req_return:
+risk_free_rate:
+max_volatility (if that is your choice):
+
+2. in pyopt_MAIN: 
+choose:
+If today is 2/17/2021
+Set the same day, 2/17/2021, as your end date in line 42.
+Set 21*12 days into the past = 2020/6/17 = as your start date in line 42
+Line 42: start, end = dt.datetime(2020, 6, 17), dt.datetime(2021, 2, 17) 
+
+Set 21*6 days into the past = 2020-10-24 as your start date in line 92:
+Line 92: start_date = '2020-10-14'
+
+
+3. Look for your portfolio weights in line 112:
+Line 112: w = pyopt_MODULE.get_weights(mean, covar, T)
+w will contain your weights in the same order as the stocks in the stocklist
+the last weight is the cash weight, set in line 52
+
+
+Eventually, you will want to study the PyPortfolioOpt user guide: https://pyportfolioopt.readthedocs.io/en/latest/UserGuide.html (Links to an external site.) 
+
+and especially the cookbook: https://github.com/robertmartin8/PyPortfolioOpt/blob/master/cookbook/2-Mean-Variance-Optimisation.ipynb

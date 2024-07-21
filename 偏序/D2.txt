@@ -1,0 +1,167 @@
+# **Discrete Math Homework 2**
+
+1. 
+   a. Let $$F_n$$ be Fibonacci sequence, prove that 
+
+   $$\sum_{k=1}^n F_n = F_{n+2} - 1$$ 
+
+   b.Let Let gn satisfy the same recurrence as Fibonacci sequence, but have different initial values: g1 = a,g2 = b, gn+2 = gn+1 + gn. Prove that
+   g1 + g2 + ... + gn = gn+2 − b.
+
+   **Soluton:**
+   
+    a. Since $$F_{n-1} = F_{n+1} - F_{n}$$, we have by telescoping
+
+   $$\begin{align*}
+    \sum_{k=1}^n F_n = \sum_{k=2}^{n+1}F_{n-1} &= \sum_{k=2}^{n+1}F_{n+1} - F_{n} \\ &= F_{n+2} - F_{2} \\ &= F_{n+2} - 1
+    \end{align*}$$ 
+
+    b. Likewise
+    
+$$\begin{align*}
+    \sum_{k=1}^n G_n = \sum_{k=2}^{n+1}G_{n-1} &= \sum_{k=2}^{n+1}G_{n+1} - G_{n} \\ &= G_{n+2} - G_{2} \\ &= G_{n+2} - b
+    \end{align*}$$ 
+
+2. Find and prove closed-form formulas for generating functions
+f(x) = a0 + a1x + a2x2 + a3x3 + ....
+of the following sequences
+    
+    a. $$a_n = a^n$$, where a ∈ R
+
+    b. $$a_n = \binom{m}{n}$$, where m ∈ N
+
+    c. $$a_n = f_n$$ where f0 = 0, f1=f2=1, $$f_{n+1} = f_{n} + f_{n-1}$$
+
+**Solution:**
+    
+a.
+
+$$\begin{align*}f(x) &= a_0 + a_1x+a_2x^2+\cdots\\ &=1+ax+(ax)^2+\cdots\\&=\frac{1}{1-ax}\end{align*}$$
+
+b. since $$\binom{m}{n} = 0$$ for $$n > m$$, we have, with binomial theorem, that
+
+$$\begin{align*}f(x) &= \sum_{n=0}^{\infty}\binom{m}{n}x^n\\ &= \sum_{0\le n\le m}\binom{m}{n}x^n + \sum_{n > m}\binom{m}{n}x^n\\&=\sum_{0\le n\le m}\binom{m}{n}x^n\\&=(1+x)^m\end{align*}$$
+
+c. 
+
+$$\begin{align*}f(x) + xf(x) &= \sum_{n=0}^{\infty}F_nx^n+\sum_{n=0}^{\infty}F_nx^{n+1}\\ &= \sum_{n=0}^{\infty}F_nx^n+\sum_{n=1}^{\infty}F_{n-1}x^{n}\\&=F_0+\sum_{n\ge 1}\left(F_n +F_{n-1}\right)x^n\\&=\sum_{n\ge 1}F_{n+1}x^n\\&=\sum_{n\ge 1}F_{n+1}x^{n+1}/x\\&=\frac{f(x) - x}{x}\end{align*}
+$$
+
+Solving for $$f(x)$$ yields $$\begin{align*}f(x) &= -\frac{x}{x^2 + x - 1}\end{align*}$$
+
+3. Given that $$p \in \mathrm{prime}, 0\le k \le p$$. Prove that $$p | \binom{p}{k}$$And deduce that $$n^p \equiv n \mod p$$
+**Solution**:
+
+    Given that $$\binom{p}{k} = \frac{p(p-1)\cdots(p-k+1)}{k!}$$
+
+    Since $$0< k < p$$. $$p \not | k!$$, and a binomial coeffient is an integer, we have $$k! | (p-1)\cdots(p-k+1)$$. Thus $$\binom{p}{k} = p \cdot \left[\frac{(p-1)\cdots(p-k+1)}{k!}\right]$$ is divisible by $$p$$.
+
+    Set $$n := 0$$, we have $$0^p = 0 \equiv 0 \mod p$$
+
+    Assume that for $$n\in \mathbb{N}$$, $$n^p \equiv n \mod p$$, by binomial theorem, 
+
+    $$\begin{align*}(n + 1)^p = \sum_{k=0}^{p}\binom{p}{k}n^k\equiv\binom{p}{0}n^0 + \binom{p}{p}n^p=n^p + 1\equiv n + 1 \mod p\end{align*}$$
+    
+    By induction, $$n^p \equiv n \mod p,\forall n\in \mathbb{N}$$.
+
+    Done!
+
+4. Use identity $$(1 + x)^n(1 + x)^n = (1 + x)^{2n}$$
+   prove that 
+   $$\sum_{m=0}^{n}\binom{n}{m}\binom{n}{n-m}=\binom{2n}{n}$$
+
+   Deduce that $$\sum_{m=0}^{n}\binom{n}{m}^2=\binom{2n}{n}$$
+
+   **Proof.** Using binomial theorem,
+
+    $$\begin{align*}\sum_{k=0}^{2k}\binom{2n}{k}x^k=(1+x)^{2n}=(1 + x)^n(1+x)^n = \left(\sum_{k=1}^{n}\binom{n}{k}x^k\right)^2&=\sum_{i=0}^{2n}\sum_{m=0}^{i}\binom{n}{m}\binom{n}{i-m}x^i\end{align*}$$
+
+    Comparing the coefficient of $$x^n$$ both sides(by letting $$i=k=n$$), we are done!
+
+5. Solve the system of equation:
+   x ≡ 5 (mod 6) x ≡ 3 (mod 10) x ≡ 8 (mod 15).
+
+   **Solution**:
+   
+   Using the fact that $$x = m \mod pq\iff pq | x - m\iff p | x - m, q | x - m \iff x = m \mod p, x = m \mod q$$ if $$p, q$$ are coprime.
+
+   we can reduce this equation into 
+
+    x = 5 mod 2 = 1 mod 2,
+    x = 5 mod 3 = 2 mod 3
+
+    x = 3 mod 2 = 1 mod 2,
+    x = 3 mod 5 = 3 mod 5
+
+    x = 8 mod 3 = 2 mod 3,
+    x = 8 mod 5 = 3 mod 5
+
+    The above is equivalent to
+
+    x = 1 mod 2
+
+    x = 2 mod 3
+
+    x = 3 mod 5
+
+    Applying Chinese Remainder Theorem, we have an unique solution in $$\mod 2 \times 3 \times 5 = \mod 30$$
+
+    By enumeration, we find that the solution is $$x \equiv 23 \mod 30.$$
+    Done!
+
+6. Find $$\gcd(1234567, 7654321)$$, and $$\gcd(2^33^55^77^911, 2^9 3^7 5^5 7^313)$$
+   **Solution**:
+   The Euclidean algorithm can be described as the python code as followed
+   ```python
+   def gcd(a, b):
+    assert(a > b)
+    while b > 0:
+        (a, b) = (b, a % b)
+    return a
+   ```
+    so the step of computing $\gcd(1234567, 7654321)$ is as followed
+
+    (7654321,1234567)
+    ->(1234567,246919) 
+    ->(246919,246891)
+    ->(246891,28)
+    ->(28,15)
+    ->(15,13)
+    ->(13,2)
+    ->(2,1)
+    ->(1,0)
+
+    Thus $$\gcd(1234567,7654321) = 1$$
+    
+    For the second one, we can compare prime factors for both integer, picking up the one with smaller power. We get $$\gcd(2^33^55^77^911, 2^9 3^7 5^5 7^313) = 2^33^55^57^3$$
+
+7. We prove by induction. For $$n = 1$$,
+   $$P_1 = 2 < 4 =2^{2^1}$$
+
+   Assume that $$P_m < 2^{2^m}$$ for $$m=1,\cdots n$$
+
+   We need to show $$P_{n+1} < 2^{2^{n+1}}$$.
+
+   In fact, consider $$P = P_1\cdots P{n} + 1$$.
+
+   Let $$q$$ be a prime factor of $$P.$$
+
+   Obiviously, $$q\not\in\{P_1, \cdots, P_n\}$$, and $$q | P\implies q < P$$, Thus
+
+   $$\begin{align*}P_{n+1} \le q \le P &= P_1\cdots P_n + 1 \\ &< 2^{2^1}2^{2^2}\cdots 2^{2^n} + 1 \\ &= 2^{2^1 + 2^2 + \cdots+2^{n}} + 1 \\ &= 2^{2^{n+1} - 2} + 1  \\ &< 2^{2^{n+1}}\end{align*}$$
+
+   Now the induction steps completes.
+
+8. In a round-robin tournament, every team plays every other team exactly once and each match has a winner and a loser. We say that the team p1,p2,··· ,pm form a cycle if p1 beats p2, p2 beats p3, ··· , pm−1 beats pm, and pm beats p1. Show that if there is a cycle of length m (m ≥ 3) among the players in a round-robin tournament, there must be a cycle of three of these players. Hint: Use the well-ordering principle.
+
+    **Solution**:
+    Let $$p_1,p_2,p_3,\cdots,p_m$$ be the cycle of smallest length. We claim that $$m = 3$$.
+
+    On contrary, assume that $$m \ge 4$$.
+    Consider the match between $$p_1$$ and $$p_3$$
+
+    case 1: $$p_3$$ wins $$p_1$$, then $$p_1, p_2, p_3$$ form a cycle of length $3$, in which case there is contradiction.
+
+    case 2: $$p_1$$ wins $$p_3$$, then $$p_1, p_3, \cdots, p_m$$ form a cycle of length $$m - 1$$ in which case this contradicts to the minimality of $$m$$
+
+    Done!
